@@ -1,0 +1,16 @@
+body {
+    padding: 20px;
+}
+
+.card-img-top {
+    width: 100%;
+    object-fit: cover; 
+}
+
+.card {
+    transition: transform .2s;
+}
+
+.card:hover {
+    transform: scale(1.02);
+}
