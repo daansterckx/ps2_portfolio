@@ -29,3 +29,9 @@ function openModal5() {
 function closeModal5() {
   document.getElementById("myModal5").style.display = "none";
 }
+function openModal6() {
+  document.getElementById("myModal6").style.display = "block";
+}
+function closeModal6() {
+  document.getElementById("myModal6").style.display = "none";
+}
