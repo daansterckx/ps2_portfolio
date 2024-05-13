@@ -7,26 +7,19 @@
     <link rel="stylesheet" href="css/styke.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Portfolio</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="projects.html">Projects</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="cv.html">cv</a>
-            </li>
-          </ul>
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+    <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" href="#page-top">Daan Sterckx</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto my-2 my-lg-0">
+                <li class="nav-item"><a class="nav-link" href="index.html">home</a></li>
+                <li class="nav-item"><a class="nav-link" href="cv.html">cv</a></li>
+                <li class="nav-item"><a class="nav-link" href="projects.html">projects</a></li>
+            </ul>
         </div>
-      </nav>
+    </div>
+</nav>
     
     <div class="container">
         <h1 class="text-center my-4">mijn projecten</h1>
@@ -79,7 +72,7 @@
             </div>
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="card" onclick="openModal3()">
-                    <video width="350" height="240" controls>
+                    <video width="414" height="240" controls>
                         <source src="/images/se&a project.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                       </video>
@@ -121,6 +114,42 @@
                 <p>this is a project i made myself for fun as i often try pentesting and bugbounty and i also love to pentest networks (only networks owned by me obviously) and this means i often need to bruteforce passwords. There is alot of passwordlists online for bruteforcing but alot of people use passwords that have to do with themselves so i made this script to generate a smaller list of passwords using keywords about a person.</p>
                 <h2>contributions</h2>
                 <p>i did everything in this project i didn't have any other group members</p>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card" onclick="openModal4()">
+                  <img src="/images/Screenshot 2024-05-13 132528.png" alt="wazuh">
+                  <div class="card-body">
+                      <h5 class="card-title">I built a datacenter into a server rack, focusing mainly on the security of the servers. I also helped with installing all the necessary software on the server.</h5>
+                      <p class="card-text">I liekd this project alot i specifically when i installed wazuh a cybersecurity tool that scans our machines for safety and even scans files on the system with virustotal to check if they are not virusses i think it's super cool.</p>
+                      <p>in the screenshot you can see the wazuh detecting a virus with virustotal</p>
+                  </div>
+              </div>
+          </div>
+          <div id="myModal4" class="modal">
+            <div class="modal-content">
+              <span class="close" onclick="closeModal4()">&times;</span>
+              <h1>datacenter technology cluster</h1>
+              <img src="/images/Screenshot 2024-05-13 132528.png" alt="wazuh">
+              <div class="card-body">
+                  <h5 class="card-title">My team and i built a cluster of servers into a server rack in the datacenter, i focussed mainly on the security of the servers. I also helped with installing all the necessary software on the server like esxi and vcenter.</h5>
+                  <p class="card-text">I liked this project alot i specifically when i installed wazuh a cybersecurity tool that scans our machines for safety and even scans files on the system with virustotal to check if they are not virusses i think it's super cool.</p>
+                  <p>in the screenshot you can see the wazuh detecting a virus with virustotal</p>
+              </div>
+            </div>
+          </div>
+            <div class="modal" id="datacenterModal">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h2>Datacenter Project</h2>
+                  <button class="btn-close" onclick="closeModal5('datacenterModal')">&times;</button>
+                </div>
+                <div class="modal-body">
+                  <p>I built a datacenter into a server rack, focusing mainly on the security of the servers. I also helped with installing all the necessary software on the server.</p>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn" onclick="closeModal5('datacenterModal')">Close</button>
+                </div>
               </div>
             </div>
             

@@ -23,3 +23,9 @@ function openModal1() {
   function closeModal4() {
     document.getElementById("myModal4").style.display = "none";
 }
+function openModal4() {
+  document.getElementById("myModal5").style.display = "block";
+}
+function closeModal4() {
+  document.getElementById("myModal5").style.display = "none";
+}
