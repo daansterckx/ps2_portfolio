@@ -80,4 +80,59 @@
   text-transform: uppercase;
 }
 
+/* Make project info and name stand out in overlays */
+#portfolio .container-fluid .portfolio-box .portfolio-box-caption {
+  background: rgba(0, 0, 0, 0.78); /* make overlay darker so text is clear */
+  padding: 1rem 1rem; /* give spacing */
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow-y: auto; /* allow scrolling if overlay text is very long */
+}
+
+#portfolio .container-fluid .portfolio-box .portfolio-box-caption .project-info {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+  white-space: normal; /* ensure long text wraps */
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  margin: 0 0 0.25rem 0;
+}
+
+#portfolio .container-fluid .portfolio-box .portfolio-box-caption .project-name {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+}
+
+/* Simpler Lightbox caption adjustments to show all text */
+/* Try common caption class names used by SimpleLightbox variations */
+.sl-caption,
+.slbCaption,
+.simplelightbox .sl-caption,
+.simpleLightbox .sl-caption,
+.sl-caption p,
+.slbCaption p,
+.simplelightbox .sl-caption p {
+  max-height: 30vh !important; /* cap height to avoid overflow */
+  overflow-y: auto !important; /* scroll if too long */
+  background: rgba(0,0,0,0.85) !important; /* darker background */
+  color: #fff !important;
+  padding: 0.9rem 1rem !important;
+  font-weight: 600 !important;
+  white-space: normal !important;
+  word-break: break-word !important;
+}
+
+/* Make sure the container has a good max-width and caption wraps */
+.sl-caption p,
+.slbCaption p,
+.simplelightbox .sl-caption p {
+  margin: 0 !important;
+  line-height: 1.4 !important;
+}
+
 /* No extra override for .project-category - the theme stylesheet keeps existing look. */
