@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Internship - Portfolio</title>
+    <meta lang="en">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styke.css">
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+    <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" href="#page-top">Daan Sterckx</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto my-2 my-lg-0">
+                <li class="nav-item"><a class="nav-link" href="index.html">home</a></li>
+                <li class="nav-item"><a class="nav-link" href="cv.html">cv</a></li>
+                <li class="nav-item"><a class="nav-link" href="projects.html">School Projects</a></li>
+                <li class="nav-item"><a class="nav-link" href="internship.html">Internship</a></li>
+                <li class="nav-item"><a class="nav-link" href="personal-projects.html">Personal Projects</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    <div class="container">
+      <h1 class="text-center my-4">Internship</h1>
+      <p class="lead">This page contains information and projects related to my internships. Replace this placeholder with real content when ready.</p>
+      <div class="row">
+        <div class="container">
+          <h1 class="text-center my-4">Internship — Device Plants</h1>
+          <p class="lead">During my internship at ReFracted, I built a set of centrally managed device plants: a Control Server (C2), a Raspberry Pi controller, and several modular peripherals for remote pentesting. Below is a breakdown of the main components and what I built.</p>
+
+          <div class="row gx-4 gx-lg-5">
+            <div class="col-lg-8">
+              <section id="intro" class="mb-4">
+                <h2 class="h4">Quick overview</h2>
+                <p>The platform is split into three areas: the Control Server (C2) that hosts the control panel and services, the controller Raspberry Pi (relay + local Bluetooth coordinator / BLE central), and a suite of peripherals built to be modular and transferable.</p>
+                <p>The peripherals I worked on are:</p>
+                <ul>
+                  <li>Keystroke injection mouse (transferable inside a standard mouse casing)</li>
+                  <li>Kali Pi device (Raspberry Pi running Kali for interactive pentesting)</li>
+                  <li>Transparent network tap for packet capture (tshark)</li>
+                  <li>Small Evil Twin AP modules for captive portal attacks</li>
+                </ul>
+              </section>
+
+              <section id="mouse" class="mb-4">
+                <h2 class="h4">Keystroke injection mouse</h2>
+                <p>I built a small HID-capable device and embedded it into a standard mouse (Logitech B100). The focus was transferability — the electronics have a modular footprint so the kit can get swapped into other mice quickly.</p>
+                <h3 class="h6">Hardware</h3>
+                <ul>
+                  <li>Seeed Xiao / ESP32-S3 (USB + Wi-Fi)</li>
+                  <li>Arduino Micro or RP2040 for USB host tasks</li>
+                  <li>Small signal 5V relay (or SSR) to switch power to the mouse</li>
+                  <li>USB host shield for HID passthrough (where needed)</li>
+                </ul>
+                <h3 class="h6">Operational flow</h3>
+                <p>Operational flow: The mouse boots and connects to the controller via Bluetooth Low Energy (BLE), I push a signed keystroke script from the C2 via the controller, and the module executes it as an HID keyboard. Telemetry & logs are published back to the controller (BLE) and the controller relays them to the C2 over the Netbird tunnel.</p>
+                <h3 class="h6">Snippet</h3>
+                <pre><code>#define UART_TX_PIN 43
+#define UART_RX_PIN 44
+#define MOUSE_POWER_CONTROL_RELAY_PIN 2
+
+void powerOnMouse() {
+  digitalWrite(MOUSE_POWER_CONTROL_RELAY_PIN, HIGH); // energize relay to supply 5V to mouse
+  mousePowered = true;
+  addLog("Mouse power ON (relay energized - 5V to mouse)");
+  delay(1000);
+}
+                </code></pre>
+              </section>
+
+              <section id="kali-pi" class="mb-4">
+                <h2 class="h4">Kali Pi device plant</h2>
+                <p>I configured a Raspberry Pi with Kali Linux to act as an interactive plant for complex pentest tasks. It connects to the C2 via Netbird VPN and usually uses an LTE module for out-of-band connectivity.</p>
+                <ul>
+                  <li>Full Kali environment for ad-hoc exploitation and tooling</li>
+                  <li>SSH + VNC integration from the control panel</li>
+                  <li>MAC/hostname rotation and stealth features to reduce detection risk</li>
+                </ul>
+              </section>
+
+              <section id="network-tap" class="mb-4">
+                <h2 class="h4">Network tap</h2>
+                <p>I built a transparent Layer 2 bridge using a Raspberry Pi and two Ethernet NICs. Traffic is captured by tshark, rotated, and pushed to the C2 for analysis.</p>
+                <ul>
+                  <li>Bridge between eth0 & eth1 (no IP on the bridge)</li>
+                  <li>Tshark-based capture with BPF filters and rotating PCAP files</li>
+                  <li>LTE + Netbird for secure exfiltration to the control panel</li>
+                </ul>
+              </section>
+
+              <section id="evil-twin" class="mb-4">
+                <h2 class="h4">Evil Twin AP modules</h2>
+                <p>I used ESP32 modules to create fake access points with a simple redirect. I later moved the full captive portal to a cloud-hosted page (cloudflared) so the local module only needs to redirect, which keeps the firmware CPU usage low and reliable.</p>
+                <ul>
+                  <li>ESP32 modules (AP+STA) for captive portal attacks</li>
+                  <li>DNS hijacking + redirect to hosted portal for payload and phishing pages</li>
+                  <li>Bluetooth (BLE) for low-bandwidth command and telemetry</li>
+                    <li>Bluetooth (BLE) for secure, low-bandwidth local command and telemetry</li>
+                </ul>
+              </section>
+
+              <section id="control-panel" class="mb-4">
+                <h2 class="h4">Control Panel (C2)</h2>
+                <p>I built and tested the Control Server as a set of Dockerized Node.js microservices. The UI provides real-time device telemetry, SSH-in-browser via xterm.js and SFTP for file retrieval.</p>
+                <h3 class="h6">Key components I implemented</h3>
+                <ul>
+                  <li>Device management dashboard with online/offline telemetry</li>
+                  <li>Command execution & file management tools for remote devices</li>
+                  <li>Auth via Authentik (OIDC) and centralized logging to Graylog</li>
+                </ul>
+                <h3 class="h6">Security & Logging</h3>
+                <p>Security was a big focus for the control panel. I integrated <strong>Authentik</strong> for OpenID Connect (OIDC) based authentication and multi-factor support. Only authenticated users can access device controls and logs.</p>
+                <ul>
+                  <li><strong>Authentication:</strong> Authentik (OIDC) + MFA, role-based permissions for devices and control actions.</li>
+                  <li><strong>Logging & audit:</strong> Graylog centralizes logs from all microservices, including action logs and telemetry; retained logs help with audits and incident response.</li>
+                  <li><strong>Session & cookie security:</strong> httpOnly, secure cookies and sameSite configuration; tokens with short TTLs.</li>
+                  <li><strong>Uploads & downloads:</strong> SFTP/SCP through the controller for secure file transfer; file size limits (100MB) are enforced by the UI.</li>
+                </ul>
+              </section>
+
+              <!-- schedule removed per request -->
+
+              <section id="results" class="mb-4">
+                <h2 class="h4">What I learned</h2>
+                <ul>
+                  <li>How to build resilient Bluetooth (BLE)-based device control with a Netbird VPN mesh.</li>
+                  <li>Embedded HID development & layout mapping for different keyboard layouts (AZERTY).</li>
+                  <li>Transparent network tapping, tshark captures & safe exfiltration.</li>
+                  <li>How to integrate authentication and logging into a secure control UI.</li>
+                  <li>I was also allowed to help in a pentest and found multiple vulnerabilities. But sadly i'm not allowed to give any more details about that.</li>
+                </ul>
+              </section>
+            </div>
+
+            <div class="col-lg-4">
+              <aside>
+                <div class="card mb-3">
+                  <img src="assets/img/portfolio/thumbnails/1.jpg" class="card-img-top" alt="mouse project" />
+                  <div class="card-body">
+                    <h5 class="card-title">Keystroke mouse</h5>
+                    <p class="card-text">Small HID module embedded into a mouse; transferable design for different casings.</p>
+                  </div>
+                </div>
+                <div class="card mb-3">
+                  <img src="assets/img/portfolio/2025-11-20-095042_hyprshot.png" class="card-img-top" alt="control panel screenshot" />
+                  <div class="card-body">
+                    <h5 class="card-title">Control panel</h5>
+                    <p class="card-text">The web UI I built to manage devices and collect data in the C2.</p>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">References</h5>
+                    <ul class="small">
+                      <li><a href="https://netbird.io">Netbird (VPN)</a></li>
+                      <li><a href="https://goauthentik.io">Authentik (OIDC)</a></li>
+                      <li><a href="https://www.graylog.org/">Graylog (centralized logs)</a></li>
+                        <li><a href="https://www.bluetooth.com">Bluetooth & BLE (low-energy)</a></li>
+                        <li><a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/bluetooth/">ESP-IDF BLE docs</a></li>
+                      <li><a href="https://www.wireshark.org/docs/man-pages/tshark.html">TShark</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </aside>
+            </div>
+          </div>
+        </div>

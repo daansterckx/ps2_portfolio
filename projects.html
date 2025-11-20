@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Portfolio</title>
-    <meta lang="nl">
+  <title>School Projects - Portfolio</title>
+  <!-- language set on html element -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/styke.css">
+  <link rel="stylesheet" href="css/styke.css">
+  <!-- Custom overrides (portfolio thumbnails, overlay, lightbox caption) -->
+  <link rel="stylesheet" href="css/custom.css">
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
@@ -15,18 +17,20 @@
             <ul class="navbar-nav ms-auto my-2 my-lg-0">
                 <li class="nav-item"><a class="nav-link" href="index.html">home</a></li>
                 <li class="nav-item"><a class="nav-link" href="cv.html">cv</a></li>
-                <li class="nav-item"><a class="nav-link" href="projects.html">projects</a></li>
+                <li class="nav-item"><a class="nav-link" href="projects.html">School Projects</a></li>
+                <li class="nav-item"><a class="nav-link" href="internship.html">Internship</a></li>
+                <li class="nav-item"><a class="nav-link" href="personal-projects.html">Personal Projects</a></li>
             </ul>
         </div>
     </div>
 </nav>
     
     <div class="container">
-  <h1 class="text-center my-4">My projects</h1>
+  <h1 class="text-center my-4">School Projects</h1>
         <div class="row">
             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
               <div class="card" onclick="openModal1()">
-                <img class="card-img-top" src="images/project1.png" alt="Project 1">
+                <img class="card-img-top" src="assets/img/portfolio/thumbnails/1.jpg" alt="Project 1">
                   <div class="card-body">
                     <h5 class="card-title">pentesting project</h5>
                     <p class="card-text">This was my favorite project by far as i love pentesting and everything that has to do with security i'm also pretty proud of my result</p>
@@ -52,7 +56,7 @@
             
             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
               <div class="card" onclick="openModal2()">
-                <img class="card-img-top" src="images/java.png" alt="Project 2">
+                <img class="card-img-top" src="assets/img/portfolio/thumbnails/2.jpg" alt="Project 2">
                   <div class="card-body">
                     <h5 class="card-title">Project java</h5>
                     <p class="card-text">made the backend code for a webapp in java</p>
@@ -99,7 +103,7 @@
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
               <div class="card" onclick="openModal4()">
-                <img src="/images/passwordlistpng.png" alt="passwordlist">
+                <img src="assets/img/portfolio/thumbnails/3-1.jpg" alt="passwordlist">
                   <div class="card-body">
                     <h5 class="card-title">selfmade script to generate a list of passwords for bruteforcing</h5>
                     <p class="card-text">I made this in my free time for fun and i thought it would be fun to share.</p>
@@ -118,7 +122,7 @@
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
               <div class="card" onclick="openModal5()">
-                  <img src="/images/Screenshot 2024-05-13 133802.png" alt="wazuh">
+                  <img src="assets/img/portfolio/thumbnails/4.jpg" alt="wazuh">
                   <div class="card-body">
                     <h5 class="card-title">My team and i built a cluster of servers into a server rack in the datacenter, i focussed mainly on the security of the servers. I also helped with installing all the necessary software on the server like esxi and vcenter.</h5>
                     <p class="card-text">I liked this project alot i specifically when i installed wazuh a cybersecurity tool that scans our machines for safety and even scans files on the system with virustotal to check if they are not virusses i think it's super cool in my opinion.</p>
@@ -129,7 +133,7 @@
             <div class="modal-content">
               <span class="close" onclick="closeModal5()">&times;</span>
               <h1>datacenter technology cluster</h1>
-              <img src="/images/Screenshot 2024-05-13 133737.png"  alt="wazuh">
+              <img src="assets/img/portfolio/thumbnails/5.jpg"  alt="wazuh">
               <div class="card-body">
                   <h5 class="card-title">My team and i built a cluster of servers into a server rack in the datacenter, i focussed mainly on the security of the servers. I also helped with installing all the necessary software on the server like esxi and vcenter. I also configured part of the firewall</h5>
                   <p class="card-text">I liked this project alot i specifically when i installed wazuh a cybersecurity tool that scans our machines for safety and even scans files on the system with virustotal to check if they are not virusses i think it's super cool.</p>
@@ -139,7 +143,7 @@
           </div>
           <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
             <div class="card" onclick="openModal6()">
-                <img src="/images/Screenshot 2024-05-13 134845.png" alt="passbolt">
+                <img src="assets/img/portfolio/thumbnails/6.jpg" alt="passbolt">
                 <div class="card-body">
                   <h5 class="card-title">Because my passwords are very important to me i hosted my own password manager on a server in my house where i can safely store my passwords on my own server. I used passbolt to achieve this i got the idea from another student</h5>
                   <p class="card-text">I want to mention this project because i'm pretty proud of my result and now i can finally safely store my passwords </p>
@@ -150,7 +154,7 @@
             <div class="modal-content">
               <span class="close" onclick="closeModal6()">&times;</span>
               <h1>passbolt password manager</h1>
-              <img src="/images/Screenshot 2024-05-13 134845.png" alt="passbolt">
+              <img src="assets/img/portfolio/thumbnails/6.jpg" alt="passbolt">
               <h5 class="card-title">Because my passwords are very important to me i hosted my own password manager on a server in my house where i can safely store my passwords on my own server. I used passbolt to achieve this i got the idea from another student</h5>
               <p class="card-text">I want to mention this project because i'm pretty proud of my result and now i can finally safely store my passwords </p>
               </div>
