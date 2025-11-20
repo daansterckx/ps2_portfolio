@@ -51,6 +51,19 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     });
 
+    // Build combined titles for each portfolio anchor so the lightbox shows project info
+    document.querySelectorAll('#portfolio a.portfolio-box').forEach(a => {
+        // prefer project-info (new), fallback to project-category for old markup
+        const nameEl = a.querySelector('.project-name');
+        const infoEl = a.querySelector('.project-info') || a.querySelector('.project-category');
+        const name = nameEl ? nameEl.textContent.trim() : '';
+        const info = infoEl ? infoEl.textContent.trim() : '';
+        const title = [name, info].filter(Boolean).join(' — ');
+        if (title) {
+            a.setAttribute('title', title);
+        }
+    });
+
     // Activate SimpleLightbox plugin for portfolio items
     new SimpleLightbox({
         elements: '#portfolio a.portfolio-box'

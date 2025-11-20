@@ -66,3 +66,18 @@
 #portfolio .container-xxl .portfolio-box .portfolio-box-caption {
   height: 100%;
 }
+
+/* Mirror the original theme's project-category styling for project-info */
+#portfolio .container-fluid .portfolio-box .portfolio-box-caption .project-info,
+#portfolio .container-sm .portfolio-box .portfolio-box-caption .project-info,
+#portfolio .container-md .portfolio-box .portfolio-box-caption .project-info,
+#portfolio .container-lg .portfolio-box .portfolio-box-caption .project-info,
+#portfolio .container-xl .portfolio-box .portfolio-box-caption .project-info,
+#portfolio .container-xxl .portfolio-box .portfolio-box-caption .project-info {
+  font-family: "Merriweather Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* No extra override for .project-category - the theme stylesheet keeps existing look. */
