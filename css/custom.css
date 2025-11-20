@@ -81,8 +81,7 @@
   z-index: 10;
 }
 
-/* Hidden anchors should not appear visually */
-.d-none { display:none !important; }
+/* Avoid overriding Bootstrap utilities like d-none/d-md-block — let Bootstrap control hide/show */
 
 /* Mirror the original theme's project-category styling for project-info */
 #portfolio .container-fluid .portfolio-box .portfolio-box-caption .project-info,
