@@ -153,3 +153,83 @@
 }
 
 /* No extra override for .project-category - the theme stylesheet keeps existing look. */
+
+/* Internship page specific improvements */
+#internship {
+  padding-top: 5.5rem; /* account for fixed navbar */
+}
+
+/* Keep aside sticky on large screens so the content flows nicely */
+@media (min-width: 992px) {
+  #internship .col-lg-4 aside {
+    position: sticky;
+    top: 5.5rem; /* sit below navbar */
+  }
+}
+
+/* Make aside cards use consistent thumbnail sizes and nice rounding */
+#internship .card-img-top {
+  height: 180px;
+  object-fit: cover;
+  object-position: center center;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+}
+
+/* Slight lift for cards to improve separation */
+#internship .card {
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  border: 1px solid rgba(0,0,0,0.04);
+}
+
+/* Improve typography and spacing for internship sections */
+#internship h2, #internship h3 {
+  margin-top: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+#internship .lead {
+  max-width: 880px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Code block style */
+#internship pre {
+  background: #0b0f14;
+  color: #e6eef8;
+  padding: 1rem;
+  border-radius: 0.45rem;
+  overflow-x: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', 'Courier New', monospace;
+  font-size: 0.9rem;
+}
+
+/* Additional readability improvements */
+#internship h2.h4 {
+  color: var(--bs-primary);
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+#internship .card-title {
+  color: var(--bs-body-color);
+  font-weight: 700;
+}
+
+#internship .card-text {
+  color: rgba(0, 0, 0, 0.75);
+  font-size: 0.95rem;
+}
+
+#internship .table {
+  background: var(--bs-light);
+  border-radius: 0.4rem;
+}
+
+#internship ul {
+  margin-left: 1rem;
+}
+
+/* Make h1 in content smaller and avoid duplicates being visually heavy */
+#internship h1 { font-size: 2rem; }
+
