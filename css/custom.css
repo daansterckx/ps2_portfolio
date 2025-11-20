@@ -230,6 +230,20 @@
   margin-left: 1rem;
 }
 
+/* Ensure readable light text for main content on the dark green background */
+#internship, #internship p, #internship h1, #internship h2, #internship h3, #internship h4, #internship li {
+  color: #fff !important;
+}
+
+/* Keep cards dark text so white background still reads */
+#internship .card, #internship .card * {
+  color: rgba(0,0,0,0.88) !important;
+}
+
+/* links in the main content should be light and stand out */
+#internship a { color: #ffeaa7 !important; }
+
+
 /* Make h1 in content smaller and avoid duplicates being visually heavy */
 #internship h1 { font-size: 2rem; }
 
