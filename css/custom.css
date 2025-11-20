@@ -162,8 +162,8 @@
 /* Keep aside sticky on large screens so the content flows nicely */
 @media (min-width: 992px) {
   #internship .col-lg-4 aside {
-    position: sticky;
-    top: 5.5rem; /* sit below navbar */
+    position: static !important; /* explicitly force static so aside scrolls with content */
+    top: auto !important;
   }
 }
 
