@@ -256,6 +256,17 @@
   color: rgba(0,0,0,0.88);
 }
 
+/* Avoid white-on-white inside the white content wrapper: give cards a subtle tint */
+#internship .card {
+  background-color: #f5faf5; /* subtle green-white tint */
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+}
+
+#internship .card-img-top {
+  background-color: rgba(0,0,0,0.02); /* slight backing so thumbnails don't vanish on white */
+}
+
 /* Accent color for links inside the content wrapper */
 #internship .internship-content a { color: var(--bs-primary); }
 
