@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styke.css">
   <link rel="stylesheet" href="css/custom.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
@@ -29,8 +30,6 @@
 </nav>
   <main id="internship" class="container py-5">
     <div class="internship-content">
-      <h1 class="text-center my-4">Internship</h1>
-      <p class="lead">This page contains information and projects related to my internships. Replace this placeholder with real content when ready.</p>
       <div class="row">
         <div class="col-12">
           <h2 class="text-center my-4">Internship — Device Plants</h2>
@@ -61,19 +60,7 @@
                   <li>USB host shield for HID passthrough (where needed)</li>
                 </ul>
                 <h3 class="h6">Operational flow</h3>
-                <p>Operational flow: The mouse boots and connects to the controller via Bluetooth Low Energy (BLE), I push a signed keystroke script from the C2 via the controller, and the module executes it as an HID keyboard. Telemetry & logs are published back to the controller (BLE) and the controller relays them to the C2 over the Netbird tunnel.</p>
-                <h3 class="h6">Snippet</h3>
-                <pre><code>#define UART_TX_PIN 43
-#define UART_RX_PIN 44
-#define MOUSE_POWER_CONTROL_RELAY_PIN 2
-
-void powerOnMouse() {
-  digitalWrite(MOUSE_POWER_CONTROL_RELAY_PIN, HIGH); // energize relay to supply 5V to mouse
-  mousePowered = true;
-  addLog("Mouse power ON (relay energized - 5V to mouse)");
-  delay(1000);
-}
-                </code></pre>
+                <p>Operational flow: The mouse boots and connects to the controller via Bluetooth Low Energy (BLE), I push a keystroke script from the C2 via the controller, and the module executes it as an HID keyboard. Telemetry & logs are published back to the controller (BLE) and the controller relays them to the C2 over the Netbird tunnel.</p>
               </section>
 
               <section id="kali-pi" class="mb-4">
@@ -115,6 +102,12 @@ void powerOnMouse() {
                   <li>Command execution & file management tools for remote devices</li>
                   <li>Auth via Authentik (OIDC) and centralized logging to Graylog</li>
                 </ul>
+                <h3 class="h6">Device Notes & Nmap scans (control panel)</h3>
+                <p>The control panel includes a small but powerful set of tools to help operators work with devices safely and efficiently:</p>
+                <ul>
+                  <li><strong>Notes:</strong> Each device has a notes stream where authenticated operators can add short, time-stamped notes and annotations. Notes are tied to the operator identity via Authentik, stored in the control server, and viewable in the device timeline.</li>
+                  <li><strong>Nmap Scans:</strong> The panel supports scheduling and running ad-hoc Nmap scans against a device or local network. Scan output is stored with the device timeline, sanitized and retained for analysis; results are searchable in the UI and shipped to Graylog for audit and further processing.</li>
+                </ul>
                 <h3 class="h6">Security & Logging</h3>
                 <p>Security was a big focus for the control panel. I integrated <strong>Authentik</strong> for OpenID Connect (OIDC) based authentication and multi-factor support. Only authenticated users can access device controls and logs.</p>
                 <ul>
@@ -142,14 +135,22 @@ void powerOnMouse() {
             <div class="col-lg-4">
               <aside>
                 <div class="card mb-3">
-                  <img src="assets/img/portfolio/thumbnails/1.jpg" class="card-img-top" alt="mouse project" />
+                  <a class="portfolio-box d-block" href="assets/img/portfolio/fullsize/1.jpg">
+                    <img src="assets/img/portfolio/thumbnails/1.jpg" class="card-img-top" alt="mouse project" />
+                    <span class="project-name d-none">Keystroke mouse</span>
+                    <span class="project-info d-none">Small HID module embedded into a mouse; transferable design for different casings.</span>
+                  </a>
                   <div class="card-body">
                     <h5 class="card-title">Keystroke mouse</h5>
                     <p class="card-text">Small HID module embedded into a mouse; transferable design for different casings.</p>
                   </div>
                 </div>
                 <div class="card mb-3">
-                  <img src="assets/img/portfolio/2025-11-20-095042_hyprshot.png" class="card-img-top" alt="control panel screenshot" />
+                  <a class="portfolio-box d-block" href="assets/img/portfolio/2025-11-20-095042_hyprshot.png">
+                    <img src="assets/img/portfolio/2025-11-20-095042_hyprshot.png" class="card-img-top" alt="control panel screenshot" />
+                    <span class="project-name d-none">Control panel</span>
+                    <span class="project-info d-none">The web UI I built to manage devices and collect data in the C2.</span>
+                  </a>
                   <div class="card-body">
                     <h5 class="card-title">Control panel</h5>
                     <p class="card-text">The web UI I built to manage devices and collect data in the C2.</p>

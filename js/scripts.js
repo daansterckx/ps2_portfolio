@@ -52,7 +52,7 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
     // Build combined titles for each portfolio anchor so the lightbox shows project info
-    document.querySelectorAll('#portfolio a.portfolio-box').forEach(a => {
+    document.querySelectorAll('a.portfolio-box').forEach(a => {
         // prefer project-info (new), fallback to project-category for old markup
         const nameEl = a.querySelector('.project-name');
         const infoEl = a.querySelector('.project-info') || a.querySelector('.project-category');
@@ -66,7 +66,7 @@ window.addEventListener('DOMContentLoaded', event => {
 
     // Activate SimpleLightbox plugin for portfolio items
     new SimpleLightbox({
-        elements: '#portfolio a.portfolio-box'
+        elements: 'a.portfolio-box'
     });
 
 });
