@@ -230,20 +230,59 @@
   margin-left: 1rem;
 }
 
-/* Ensure readable light text for main content on the dark green background */
-#internship, #internship p, #internship h1, #internship h2, #internship h3, #internship h4, #internship li {
-  color: #fff !important;
+/* Instead of forcing all internship text to white (which looks bad on lighter content),
+   we create a white content wrapper and keep the page background dark. */
+
+/* White content wrapper (cards / main body) for the internship page */
+#internship .internship-content {
+  background: #ffffff;
+  color: #2d2d2d; /* dark text inside the white card */
+  padding: 2rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.07);
 }
 
-/* Keep cards dark text so white background still reads */
+/* Ensure headings and paragraphs inside the content wrapper are dark */
+#internship .internship-content h1,
+#internship .internship-content h2,
+#internship .internship-content h3,
+#internship .internship-content p,
+#internship .internship-content li {
+  color: #2d2d2d;
+}
+
+/* Keep the aside and portfolio cards styled with darker text on white backgrounds */
 #internship .card, #internship .card * {
-  color: rgba(0,0,0,0.88) !important;
+  color: rgba(0,0,0,0.88);
 }
 
-/* links in the main content should be light and stand out */
-#internship a { color: #ffeaa7 !important; }
+/* Accent color for links inside the content wrapper */
+#internship .internship-content a { color: var(--bs-primary); }
 
 
 /* Make h1 in content smaller and avoid duplicates being visually heavy */
 #internship h1 { font-size: 2rem; }
+
+#internship .internship-content {
+  background: linear-gradient(180deg, #ffffff 0%, #fbfbfc 100%);
+  border-left: 4px solid rgba(49,67,17,0.95); /* subtle green accent */
+}
+
+#internship .internship-content {
+  max-width: 1100px;
+  margin: 2rem auto;
+}
+
+#internship section {
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px dashed rgba(0,0,0,0.06);
+}
+
+/* Give the columns some breathing room */
+#internship .row.gx-4:last-child { margin-bottom: 0; }
+@media (min-width: 992px) {
+  #internship .col-lg-8 { padding-right: 2rem; }
+  #internship .col-lg-4 { padding-left: 2rem; }
+}
 
