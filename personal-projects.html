@@ -10,7 +10,7 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
     <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="#page-top">Daan Sterckx</a>
+        <a class="navbar-brand" href="#top">Daan Sterckx</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto my-2 my-lg-0">
@@ -29,17 +29,19 @@
       <div class="row">
         <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
           <div class="card" onclick="openModal1()">
-            <img class="card-img-top" src="images/project1.png" alt="Project 1">
+            <img class="card-img-top" src="images/soc.png" alt="Project 1">
               <div class="card-body">
                 <h5 class="card-title">soc</h5>
                 <p class="card-text">I made my own SOC in my basement</p>
                     <p class="card-text"></p>
               </div>
             </div>
+          <!-- (Moved to School Projects) -->
             <div id="myModal1" class="modal">
               <div class="modal-content">
-                <span class="close" onclick="closeModal1()">&times;</span>
+                <button class="close" type="button" aria-label="Close" onclick="closeModal1()">&times;</button>
                 <h1>SOC</h1>
+                <img src="images/soc.png" alt="SOC">
                 <p>Right now my soc i perfectly talored to my environment i have many servers that need protecting and using my soc i know they will be. The soc contains of a wazuh seim that sends logs to n8n which is an automation software this then takes action on the alerts from the seim in many ways firstly all alerts i find important (failed logins, added files, etc) are sent to me in a notification on discord. Then depending on the alert action gets taken the firstly if the alert is about a new file the file is scanned using virustotal. If it gets detected as malware the n8n server will sign into the machine using ssh and delete the file for me. Then if there is many login attempts the n8n server will block traffic on port 22. and there are many more actions the soc can take </p>
                 <p>the soc also contains an opencti server for documenting cases of attacks or malwar in my servers and there is also a velociraptor for forensics</p>
                 <p>the soc is a work in progress and i am constantly adding new features</p>
@@ -58,8 +60,706 @@
                 </ul>
               </div>
             </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+          <div class="card" onclick="openModal2()">
+            <img class="card-img-top" src="images/owebui.png" alt="AI Server">
+              <div class="card-body">
+                <h5 class="card-title">AI Server</h5>
+                <p class="card-text">I built an AI server for secure and private use</p>
+                    <p class="card-text"></p>
+              </div>
+            </div>
+            <div id="myModal2" class="modal">
+              <div class="modal-content">
+                <button class="close" type="button" aria-label="Close" onclick="closeModal2()">&times;</button>
+                <h1>AI server</h1>
+                <img src="images/owebui.png" alt="server">
+                <p>I built an ai server so i could use ai securely and privately</p>
+                <p>The ai server uses openwebui and ollama i have many custom agents to do certain tasks for me and the ai server is also integrated into my soc using n8n i plan on making many more workflows better or automated using ai</p>
+                <p>what i learned:</p>
+                <ul>
+                  <li>how do LLM's work and how do ai agents work</li>
+                  <li>how to give ai tools like RAG, web search, canvas for code and file editing, etc</li>
+                  <li>making my own ai models</li>
+                  <li>automating things with ai</li>
+                  <li>integrate ai agents into my soc</li>
+                </ul>
+              </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+          <div class="card" onclick="openModal4()">
+            <img class="card-img-top" src="images/kali.png" alt="Perfect Kali Machine">
+              <div class="card-body">
+                <h5 class="card-title">Perfect Kali Machine</h5>
+                <p class="card-text">My customized Kali Linux setup optimized for penetration testing and ethical hacking.</p>
+                    <p class="card-text"></p>
+              </div>
+            </div>
+            <div id="myModal4" class="modal">
+              <div class="modal-content">
+                <button class="close" type="button" aria-label="Close" onclick="closeModal4()">&times;</button>
+                <h1>Perfect Kali Machine</h1>
+                <img src="images/kali.png" alt="Kali Machine">
+                <p>I built the ultimate Kali Linux machine tailored to my needs for penetration testing.</p>
+                <p>The machine is in its own network so it can't spread whatever malware i may run on it and i always have a snapshot so i can go back if something goes wrong</p>
+                <p>Key features include:</p>
+                <ul>
+                  <li>Pre-installed and updated Kali tools (Metasploit, Nmap, Burp Suite, etc.)</li>
+                  <li>Custom aliases and scripts for common tasks</li>
+                  <li>snapshotsquick environment recovery</li>
+                </ul>
+                <p>what i learned:</p>
+                <ul>
+                  <li>Scripting for automation in penetration testing workflows</li>
+                  <li>snapshotting</li>
+                  <li>Best practices for maintaining a secure and efficient testing environment</li>
+                </ul>
+              </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+          <div class="card" onclick="openModal5()">
+            <img class="card-img-top" src="images/provic.png" alt="Project 4">
+              <div class="card-body">
+                <h5 class="card-title">professional victim</h5>
+                <p class="card-text">I have a windows vm in my proxmox vm tailor made to run malware it's also fenced off from my network like the kali machine and there is also snapshots so i can always quickly recover it</p>
+                    <p class="card-text"></p>
+              </div>
+            </div>
+            <div id="myModal5" class="modal">
+              <div class="modal-content">
+                <button class="close" type="button" aria-label="Close" onclick="closeModal5()">&times;</button>
+                <h1>professional victim</h1>
+                <img src="images/provic.png" alt="professional victim">
+                <p>I have a windows vm in my proxmox vm tailor made to run malware it's also fenced off from my network like the kali machine and there is also snapshots so i can always quickly recover it</p>
+                <p>what i learned:</p>
+                <ul>
+                  <li>Malware analysis techniques and safe execution environments</li>
+                  <li>Virtual machine isolation and network segmentation</li>
+                  <li>Snapshot management for quick recovery</li>
+                </ul>
+              </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+          <div class="card" onclick="openModal6()">
+            <img class="card-img-top" src="images/tools.png" alt="Project 5">
+              <div class="card-body">
+                <h5 class="card-title">general purpose support servers for pentesting</h5>
+                <p class="card-text">I have many containers in my proxmox cluster to help me with pentesting / ethical hacking</p>
+                    <p class="card-text"></p>
+              </div>
+            </div>
+            <div id="myModal6" class="modal">
+              <div class="modal-content">
+                <button class="close" type="button" aria-label="Close" onclick="closeModal6()">&times;</button>
+                <h1>general purpose support servers for pentesting</h1>
+                <img src="images/tools.png" alt="Project 5">
+                <p>these servers include/p>
+                <ul>
+                  <li>webcheck</li>
+                  <li>hacktricks</li>
+                  <li>It tools (see screenshot)</li>
+                  <li>cyberchef</li>
+                  <li>spiderfoot</li>
+                <p>what i learned:</p>
+                <ul>
+                  <li>mostly how to manage proxmox containers</li>
+                </ul>
+              </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+          <div class="card" onclick="openModal7()">
+            <img class="card-img-top" src="images/torrents.png" alt="Project 6">
+              <div class="card-body">
+                <h5 class="card-title">jellyfin+radarr+sonarr media server</h5>
+                <p class="card-text">I watch alot of movies and tv shows and i'm not a big fan of streaming services so I set up my own media server using Jellyfin, Radarr, and Sonarr. The image you see with "daanflix" is jellyfin i just customized it pretty heavily</p>
+                    <p class="card-text"></p>
+              </div>
+            </div>
+            <div id="myModal7" class="modal">
+              <div class="modal-content">
+                <button class="close" type="button" aria-label="Close" onclick="closeModal7()">&times;</button>
+                <h1>jellyfin+radarr+sonarr media server</h1>
+                <img src="images/torrents.png" alt="Project 6">
+                <p>DI watch alot of movies and tv shows and i'm not a big fan of streaming services so I set up my own media server using Jellyfin, Radarr, and Sonarr.The image you see with "daanflix" is jellyfin i just customized it pretty heavily</p>
+                <p>I also setup a cloudflared tunnel to put the server on the internet in a secure way</p>
+                <p>what i learned:</p>
+                <ul>
+                  <li>Personal media server setup and management</li>
+                  <li>Integration of Jellyfin, Radarr, and Sonarr</li>
+                  <li>Automated media downloading and organization</li>
+                  <li>Secure remote access using Cloudflared tunnels</li>
+                </ul>
+              </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+          <div class="card" onclick="openModal8()">
+            <img class="card-img-top" src="images/rocketchat.png" alt="Project 7">
+              <div class="card-body">
+                <h5 class="card-title">rocket chat</h5>
+                <p class="card-text">I setup a rocket chat server for private and secure communication with my friends and family</p>
+                    <p class="card-text"></p>
+              </div>
+            </div>
+            <div id="myModal8" class="modal">
+              <div class="modal-content">
+                <button class="close" type="button" aria-label="Close" onclick="closeModal8()">&times;</button>
+                <h1>rocket chat</h1>
+                <img src="images/rocketchat.png" alt="Project 7">
+                <p>I setup a rocket chat server for private and secure communication with my friends and family</p>
+                <p>what i learned:</p>
+                <ul>
+                  <li>Private and secure communication setup</li>
+                  <li>Rocket Chat server configuration and management</li>
+                </ul>
+              </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+          <div class="card" onclick="openModal9()">
+            <img class="card-img-top" src="images/gitlab.png" alt="Project 8">
+              <div class="card-body">
+                <h5 class="card-title">self hosted gitlab instance</h5>
+                <p class="card-text">I setup my own gitlab instance and also exposed it to the internet with cloudflared</p>
+                <p>This way all sensitive code i might use for pentesting or other projects is kept private and secure while still having git functionalities</p>
+                    <p class="card-text"></p>
+              </div>
+            </div>
+            <div id="myModal9" class="modal">
+              <div class="modal-content">
+                <button class="close" type="button" aria-label="Close" onclick="closeModal9()">&times;</button>
+                <h1>self hosted gitlab instance</h1>
+                <img src="images/gitlab.png" alt="Project 8">
+                <p>I setup my own gitlab instance and also exposed it to the internet with cloudflared</p>
+                <p>This way all sensitive code i might use for pentesting or other projects is kept private and secure while still having git functionalities</p>
+                <p>what i learned:</p>
+                <ul>
+                  <li>Private and secure code hosting</li>
+                  <li>GitLab instance setup and management</li>
+                  <li>Secure remote access using Cloudflared tunnels</li>
+                </ul>
+              </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+          <div class="card" onclick="openModal10()">
+            <img class="card-img-top" src="images/amp.png" alt="Project 9">
+              <div class="card-body">
+                <h5 class="card-title">game server with AMP</h5>
+                <p class="card-text">I setup a server to easily manage and host game servers using AMP (Application Management Panel). I mostly use it for my minecraft server. Before i used to just use java with the server.jar file but with this server i can easily switch between versions and modpacks and also manage backups and updates all from a nice webui</p>
+                </p>
+                    <p class="card-text"></p>
+              </div>
+            </div>
+            <div id="myModal10" class="modal">
+              <div class="modal-content">
+                <span class="close" onclick="closeModal10()">&times;</span>
+                <h1>game server with AMP</h1>
+                <img src="images/amp.png" alt="Project 9">
+                <p>I setup a server to easily manage and host game servers using AMP (Application Management Panel). I mostly use it for my minecraft server. Before i used to just use java with the server.jar file but with this server i can easily switch between versions and modpacks and also manage backups and updates all from a nice webui</p>
+                <p>what i learned:</p>
+                <ul>
+                  <li>learned alot about java and dependencies</li>
+                  <li>gained experience with server management and web interfaces</li>
+                  <li>backup and update strategies for game servers</li>
+                  <li>before i had this server the minecraft servers thought me alot about the linux cli and server management</li>
+                </ul>
+              </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+          <div class="card" onclick="openModal11()">
+            <img class="card-img-top" src="images/wazuh.png" alt="Project 10">
+              <div class="card-body">
+                <h5 class="card-title">wazuh</h5>
+                <p class="card-text">wazuh acts as the seim in my soc its an amazing seim. It collects log files for all my servers and send alerts to n8n for important things</p>
+                    <p class="card-text"></p>
+              </div>
+            </div>
+            <div id="myModal11" class="modal">
+              <div class="modal-content">
+                <span class="close" onclick="closeModal11()">&times;</span>
+                <h1>Project 10</h1>
+                <img src="images/wazuh.png" alt="Project 10">
+                <h5>wazuh</h5>
+                <p>wazuh acts as the seim in my soc its an amazing seim. It collects log files for all my servers and send alerts to n8n for important things</p>
+                <p>what i learned:</p>
+                <ul>
+                  <li>log collection and agent management with wazuh</li>
+                  <li>everything about rules and decoders in wazuh</li>
+                  <li>what a seim does and how it can be used</li>
+                </ul>
+              </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+          <div class="card" onclick="openModal12()">
+            <img class="card-img-top" src="images/vaultwarden.png" alt="Project 11">
+              <div class="card-body">
+                <h5 class="card-title">vaultwarden</h5>
+                <p class="card-text">A password manager is a very important part of being secure but i'm not a massive fan of all my passwords being saved on someone elses server. So i set up my own vaultwarden server to store my passwords locally and securely. Vaultwarden integrates amazingly with bitwarden so i can just use the apps and browser extentions for bitwarden which is awesome.</p>
+                    <p class="card-text"></p>
+              </div>
+            </div>
+            <div id="myModal12" class="modal">
+              <div class="modal-content">
+                <span class="close" onclick="closeModal12()">&times;</span>
+                <h5>vaultwarden</h5>
+                <img src="images/vaultwarden.png" alt="Project 11">
+                <p>A password manager is a very important part of being secure but i'm not a massive fan of all my passwords being saved on someone elses server. So i set up my own vaultwarden server to store my passwords locally and securely. Vaultwarden integrates amazingly with bitwarden so i can just use the apps and browser extentions for bitwarden which is awesome.</p>
+                <p>what i learned:</p>
+                <ul>
+                  <li>password management with vaultwarden</li>
+                  <li>self-hosting and security best practices</li>
+                </ul>
+              </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+          <div class="card" onclick="openModal13()">
+            <img class="card-img-top" src="images/n8n.png" alt="Project 12">
+              <div class="card-body">
+                <h5 class="card-title">n8n</h5>
+                <p class="card-text">n8n does all the automation in my soc. It can manage ai agents send alerts scan files and execute commands on my servers.</p>
+                    <p class="card-text"></p>
+              </div>
+            </div>
+            <div id="myModal13" class="modal">
+              <div class="modal-content">
+                <span class="close" onclick="closeModal13()">&times;</span>
+                <h1>n8n</h1>
+                <img src="images/n8n.png" alt="Project 12">
+                <p>n8n does all the automation in my soc. It can manage ai agents send alerts scan files and execute commands on my servers. It's kind of my xdr</p>
+                <p>what i learned:</p>
+                <ul>
+                  <li>automation with n8n</li>
+                  <li>server management and orchestration</li>
+                  <li>how to use xdr</li>
+                </ul>
+              </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+          <div class="card" onclick="openModal14()">
+            <img class="card-img-top" src="images/homeass.png" alt="Project 13">
+              <div class="card-body">
+                <h5 class="card-title">homeassistant</h5>
+                <p class="card-text">As is very common in self hosting i also have a homeassistant server to manage my smart home devices and automation. It can control my lights my radio, my cameras and much more. Its not finished yet and i'm planning to buy alot more smart home devices and make some myself as well like a controller for my blinds with an esp32-s3</p>
+                    <p class="card-text"></p>
+              </div>
+            </div>
+            <div id="myModal14" class="modal">
+              <div class="modal-content">
+                <span class="close" onclick="closeModal14()">&times;</span>
+                <h1>homeassistant</h1>
+                <img src="images/homeass.png" alt="Project 13">
+                <p>As is very common in self hosting i also have a homeassistant server to manage my smart home devices and automation. It can control my lights my radio, my cameras and much more. Its not finished yet and i'm planning to buy alot more smart home devices and make some myself as well like a controller for my blinds with an esp32-s3</p>
+                <p>what i learned:</p>
+                <ul>
+                  <li>home automation with homeassistant</li>
+                  <li>smart device integration</li>
+                  <li>esp and arduino development for custom controllers</li>
+                  <li>custom smart home device creation</li>
+                </ul>
+              </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+          <div class="card" onclick="openModal15()">
+            <img class="card-img-top" src="images/seafile.png" alt="Project 14">
+              <div class="card-body">
+                <h5 class="card-title">seafile</h5>
+                <p class="card-text">I have a seafile server for sharing files between my devices. It provides a secure and efficient way to manage and sync files across different platforms. Before i had a nextcloud server to do this but it was to bloated. I'm still not that happy with seafile but it works for now.</p>
+                    <p class="card-text"></p>
+              </div>
+            </div>
+            <div id="myModal15" class="modal">
+              <div class="modal-content">
+                <span class="close" onclick="closeModal15()">&times;</span>
+                <h1>seafile</h1>
+                <img src="images/seafile.png" alt="Project 14">
+                <p>first i had a samba share to share files between my devices but i wanted to have offline copies of all the files on all my devices so now iS have a seafile server for sharing files between my devices. It provides a secure and efficient way to manage and sync files across different platforms. Before i had a nextcloud server to do this but it was to bloated. I'm still not that happy with seafile but it works for now.</p>
+                <p>what i learned:</p>
+                <ul>
+                  <li>file sharing and synchronization</li>
+                  <li>cloudflare integration (But i will probably switch to vpn for this later)</li>
+                </ul>
+              </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+          <div class="card" onclick="openModal16()">
+            <img class="card-img-top" src="images/pihole.png" alt="Project 15">
+              <div class="card-body">
+                <h5 class="card-title">Pi hole dns</h5>
+                <p class="card-text">First i had a bind server for dns but i also wanted to block ads and malicious websites on my network so i do this using dns blocking with a pi hole i have over 1000000 blocked domains. This will soon be changed because I have ordered a zima board for opnsense and will switch to that when it arrives then dns blocking will be done by opnsense.</p>
+                    <p class="card-text"></p>
+              </div>
+            </div>
+            <div id="myModal16" class="modal">
+              <div class="modal-content">
+                <span class="close" onclick="closeModal16()">&times;</span>
+                <h1>Pi hole dns</h1>
+                <img src="images/pihole.png" alt="Project 15">
+                <p>First i had a bind server for dns but i also wanted to block ads and malicious websites on my network so i do this using dns blocking with a pi hole i have over 1000000 blocked domains. This will soon be changed because I have ordered a zima board for opnsense and will switch to that when it arrives then dns blocking will be done by opnsense.</p>
+                <p>what i learned:</p>
+                <ul>
+                  <li>dns management</li>
+                  <li>dns blocking</li>
+                </ul>
+              </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+          <div class="card" onclick="openModal17()">
+            <img class="card-img-top" src="images/netbird.png" alt="Project 16">
+              <div class="card-body">
+                <h5 class="card-title">netbird</h5>
+                <p class="card-text">For my vpn i use netbird its a wireguard based vpn solution that is easy to set up and manage. I have 2 netbird connectors on my network on 2 different servers for high availability. For now i'm just using netbird's own cloud but i want to change it zo a self hosted server but i haven't gotten to it yet.</p>
+                    <p class="card-text"></p>
+              </div>
+            </div>
+            <div id="myModal17" class="modal">
+              <div class="modal-content">
+                <span class="close" onclick="closeModal17()">&times;</span>
+                <h1>netbird</h1>
+                <img src="images/netbird.png" alt="Project 16">
+                <p>For my vpn i use netbird its a wireguard based vpn solution that is easy to set up and manage. I have 2 netbird connectors on my network on 2 different servers for high availability. For now i'm just using netbird's own cloud but i want to change it zo a self hosted server but i haven't gotten to it yet.</p>
+                <p>what i learned:</p>
+                <ul>
+                  <li>vpn management</li>
+                  <li>how to use netbird</li>
+                </ul>
+              </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+          <div class="card" onclick="openModal18()">
+            <img class="card-img-top" src="images/authentik.png" alt="Project 17">
+              <div class="card-body">
+                <h5 class="card-title">authentik</h5>
+                <p class="card-text">i use authentik for sso authentication on as many services as i can so i can easily manage accounts and get logs for login attempts and stuff. I currently use authentik for proxmox, opencti, jellyfin and openwebui which is my ai server</p>
+                    <p class="card-text"></p>
+              </div>
+            </div>
+            <div id="myModal18" class="modal">
+              <div class="modal-content">
+                <span class="close" onclick="closeModal18()">&times;</span>
+                <h1>authentik</h1>
+                <img src="images/authentik.png" alt="Project 17">
+                <p>i use authentik for sso authentication on as many services as i can so i can easily manage accounts and get logs for login attempts and stuff. I currently use authentik for proxmox, opencti, jellyfin and openwebui which is my ai server</p>
+                <p>what i learned:</p>
+                <ul>
+                  <li>sso and sso providers</li>
+                  <li>openid and how to use it</li>
+                  <li>I also used authentik on my project for my internship so i also learned how to code openid into an app</li>
+                </ul>
+              </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+          <div class="card" onclick="openModal19()">
+            <img class="card-img-top" src="images/opencti.png" alt="Project 18">
+              <div class="card-body">
+                <h5 class="card-title">opencti</h5>
+                <p class="card-text">I have an opencti server to manage incidents and get the latest news about cybersecurity bug and malware.</p>
+                    <p class="card-text"></p>
+              </div>
+            </div>
+            <div id="myModal19" class="modal">
+              <div class="modal-content">
+                <span class="close" onclick="closeModal19()">&times;</span>
+                <h1>opencti</h1>
+                <img src="images/opencti.png" alt="Project 18">
+                <p>I have an opencti server to manage incidents and get the latest news about cybersecurity bug and malware.</p>
+                <p>what i learned:</p>
+                <ul>
+                  <li>STIG and TAXI</li>
+                  <li>incident management</li>
+                  <li>threat intelligence integration</li>
+                  <li>case management</li>
+                  <li>opencti usage and configuration</li>
+                  <li>integration with other SOC components</li>
+                  <li>reporting and analysis</li>
+                  <li>enrichment techniques</li>
+                  <li>rss feeds into opencti</li>
+                </ul>
+              </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+          <div class="card" onclick="openModal20()">
+            <img class="card-img-top" src="images/sliver.png" alt="Project 19">
+              <div class="card-body">
+                <h5 class="card-title">sliver</h5>
+                <p class="card-text">In a ctf or even a pentest it can be very handy to have a command and control server ready to deploy. Thats why i have a sliver server on my cluster i can spin up in seconds</p>
+                    <p class="card-text"></p>
+              </div>
+            </div>
+            <div id="myModal20" class="modal">
+              <div class="modal-content">
+                <span class="close" onclick="closeModal20()">&times;</span>
+                <h1>sliver</h1>
+                <img src="images/sliver.png" alt="sliver">
+                <p>In a ctf or even a pentest it can be very handy to have a command and control server ready to deploy. Thats why i have a sliver server on my cluster i can spin up in seconds The command and control server gets made available on the internet with a cloudflared tunnel</p>
+                <p>what i learned:</p>
+                <ul>
+                  <li>setup of a c2 server</li>
+                  <li>how to use a beacon</li>
+                </ul>
+              </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+          <div class="card" onclick="openModal21()">
+            <img class="card-img-top" src="images/awareness.png" alt="Project 20">
+              <div class="card-body">
+                <h5 class="card-title">a few websites to spread awareness</h5>
+                <p class="card-text">i made a website for my dads company to spread awareness about cybersecurity. Then i also made a website to host their general conditions for clients and stuff and i also made kind of my own website with info about cybersecurity.</p>
+                    <p class="card-text"></p>
+              </div>
+            </div>
+            <div id="myModal21" class="modal">
+              <div class="modal-content">
+                <span class="close" onclick="closeModal21()">&times;</span>
+                <h1>a few websites to spread awareness</h1>
+                <img src="images/awareness.png" alt="a few websites to spread awareness">
+                <p>i made a website for my dads company to spread awareness about cybersecurity. Then i also made a website to host their general conditions for clients and stuff and i also made kind of my own website with info about cybersecurity.</p>
+                <p>what i learned:</p>
+                <ul>
+                  <li>webdesign</li>
+                  <li>using ai for styling</li>
+                </ul>
+              </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+          <div class="card" onclick="openModal22()">
+            <img class="card-img-top" src="images/daloradius.png" alt="Project 21">
+              <div class="card-body">
+                <h5 class="card-title">daloradius</h5>
+                <p class="card-text"> I wanted to have wpa2 entherprise on my home network because why not. But to have that i needed a radius server at first i had freeradius which worked great but i had to ssh into my machine to add users which i didn't like very much and then i found daloradius which is basically freeradius with a webui and it works great i love it</p>
+                    <p class="card-text"></p>
+              </div>
+            </div>
+            <div id="myModal22" class="modal">
+              <div class="modal-content">
+                <span class="close" onclick="closeModal22()">&times;</span>
+                <h1>daloradius</h1>
+                <img src="images/daloradius.png" alt="daloradius">
+                <p> I wanted to have wpa2 entherprise on my home network because why not. But to have that i needed a radius server at first i had freeradius which worked great but i had to ssh into my machine to add users which i didn't like very much and then i found daloradius which is basically freeradius with a webui and it works great i love it</p>
+                <p>what i learned:</p>
+                <ul>
+                  <li>wpa2 enterprise</li>
+                  <li>radius server</li>
+                </ul>
+              </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+          <div class="card" onclick="openModal23()">
+            <img class="card-img-top" src="images/docs.png" alt="docmost">
+              <div class="card-body">
+                <h5 class="card-title">docmost</h5>
+                <p class="card-text">For my internship i needed a clean way to have tutorials and instruction on how to use the stuff i made and i thought ghmmmm i could just use word but that boring so i setup a docmost server and have some nice guides on it i think i will also use it in the future for more notes and stuff</p>
+                    <p class="card-text"></p>
+              </div>
+            </div>
+            <div id="myModal23" class="modal">
+              <div class="modal-content">
+                <span class="close" onclick="closeModal23()">&times;</span>
+                <h1>docmost</h1>
+                <img src="images/docs.png" alt="docmost">
+                <p>For my internship i needed a clean way to have tutorials and instruction on how to use the stuff i made and i thought ghmmmm i could just use word but that boring so i setup a docmost server and have some nice guides on it i think i will also use it in the future for more notes and stuff</p>
+                <p>what i learned:</p>
+                <ul>
+                  <li>writing in md format</li>
+                </ul>
+              </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+          <div class="card" onclick="openModal24()">
+            <img class="card-img-top" src="images/bot.png" alt="discord bot">
+              <div class="card-body">
+                <h5 class="card-title">discord bot</h5>
+                <p class="card-text">I wrote a custom discord bot in python to enrich my discord alerts from my soc with ai it allows me to ask questions to ai in discord, send an alert or message to my ai server to enrich it and give me an explaination and stuff</p>
+                    <p class="card-text"></p>
+              </div>
+            </div>
+            <div id="myModal24" class="modal">
+              <div class="modal-content">
+                <span class="close" onclick="closeModal24()">&times;</span>
+                <h1>discord bot</h1>
+                <img src="images/bot.png" alt="discord bot">
+                <p>I wrote a custom discord bot in python to enrich my discord alerts from my soc with ai it allows me to ask questions to ai in discord, send an alert or message to my ai server to enrich it and give me an explaination and stuff</p>
+                <p>what i learned:</p>
+                <ul>
+                  <li>python</li>
+                  <li>discord.py</li>
+                  <li>ai integration</li>
+                  <li>bot development</li>
+                </ul>
+              </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+          <div class="card" onclick="openModal25()">
+            <img class="card-img-top" src="images/proxmox.png" alt="Project 23">
+              <div class="card-body">
+                <h5 class="card-title">proxmox cluster</h5>
+                <p class="card-text">I'v been talking about all these servers but i haven't told you about where they all live. I run all these servers in my own proxmox cluster in my basement it consists of 7 nodes, 80 cores, 190.10GB ram and 12.65TB of storage</p>
+                    <p class="card-text"></p>
+              </div>
+            </div>
+            <div id="myModal25" class="modal">
+              <div class="modal-content">
+                <span class="close" onclick="closeModal25()">&times;</span>
+                <h1>Proxmox cluster</h1>
+                <img src="images/proxmox.png" alt="Proxmox cluster">
+                <p>I'v been talking about all these servers but i haven't told you about where they all live. I run all these servers in my own proxmox cluster in my basement it consists of 7 nodes, 80 cores, 190.10GB ram and 12.65TB of storage</p>
+                <p>what i learned:</p>
+                <ul>
+                  <li>Proxmox</li>
+                  <li>Cluster management</li>
+                  <li>High availability setup</li>
+                  <li>Resource allocation and optimization</li>
+                </ul>
+              </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+          <div class="card" onclick="openModal26()">
+            <img class="card-img-top" src="images/arch.png" alt="Project 24">
+              <div class="card-body">
+                <h5 class="card-title">my perfect os</h5>
+                <p class="card-text">I built the perfect operating system tailored to my needs, Its arch but with a lot of customization. I have tailored my desktop to look exactly the way i want and i have also added the blackarch repo to it so i can install any sescurity or pentesting related tools easily. i also use hyprland as a window manager which works perfectly and looks amazing. my keyboard shortcuts are also all custom and exactly how i want them and so on</p>
+                    <p class="card-text"></p>
+              </div>
+            </div>
+            <div id="myModal26" class="modal">
+              <div class="modal-content">
+                <span class="close" onclick="closeModal26()">&times;</span>
+                <h1>my perfect os</h1>
+                <img src="images/arch.png" alt="my perfect os">
+                <p>I built the perfect operating system tailored to my needs, Its arch but with a lot of customization. I have tailored my desktop to look exactly the way i want and i have also added the blackarch repo to it so i can install any sescurity or pentesting related tools easily. i also use hyprland as a window manager which works perfectly and looks amazing. my keyboard shortcuts are also all custom and exactly how i want them and so on</p>
+                <p>what i learned:</p>
+                <ul>
+                  <li>Personalized OS customization</li>
+                  <li>Window manager configuration</li>
+                  <li>Keyboard shortcut optimization</li>
+                  <li>Integration of security tools from BlackArch repository</li>
+                </ul>
+              </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+          <div class="card" onclick="openModal27()">
+            <img class="card-img-top" src="images/2025-11-27-102046_hyprshot.png" alt="Project 25">
+              <div class="card-body">
+                <h5 class="card-title">hack the box</h5>
+                <p class="card-text">I try to do the weekly season box on hack the box as much as i can.</p>
+                    <p class="card-text"></p>
+              </div>
+            </div>
+            <div id="myModal27" class="modal">
+              <div class="modal-content">
+                <span class="close" onclick="closeModal27()">&times;</span>
+                <h1>hack the box</h1>
+                <img src="images/2025-11-27-102046_hyprshot.png" alt="hack the box">
+                <p>I try to do the weekly season box on hack the box as much as i can.</p>
+                <p>what i learned:</p>
+                <ul>
+                  <li>alot about pentesting</li>
+                  <li>linux and windows hacking</li>
+                  <li>webapp hacking</li>
+                  <li>network exploitation</li>
+                </ul>
+              </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+          <div class="card" onclick="openModal28()">
+            <img class="card-img-top" src="images/portswig.png" alt="Project 26">
+              <div class="card-body">
+                <h5 class="card-title">portswigger courses</h5>
+                <p class="card-text">i've completed many courses on portswigger</p>
+                    <p class="card-text"></p>
+              </div>
+            </div>
+            <div id="myModal28" class="modal">
+              <div class="modal-content">
+                <span class="close" onclick="closeModal28()">&times;</span>
+                <h1>portswigger courses</h1>
+                <img src="images/portswig.png" alt="portswigger courses">
+                <p>i've completed many courses on portswigger</p>
+                <p>what i learned:</p>
+                <ul>
+                  <li>Practical web security skills</li>
+                  <li>Hands-on experience with Burp Suite</li>
+                  <li>Understanding of common web vulnerabilities</li>
+                  <li>Techniques for identifying and exploiting security flaws</li>
+                </ul>
+              </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+          <div class="card" onclick="openModal29()">
+            <img class="card-img-top" src="assets/img/portfolio/thumbnails/3-1.jpg" alt="Project 27">
+              <div class="card-body">
+                <h5 class="card-title">hack the government</h5>
+                <p class="card-text">I participated in hack the government twice the first time i ended up third of the students the second one i didn't really have time to participate because of my internship but i still found some very nice bugs even tho they were duplicates and ended up 31st</p>
+                    <p class="card-text"></p>
+              </div>
+            </div>
+            <div id="myModal29" class="modal">
+              <div class="modal-content">
+                <span class="close" onclick="closeModal29()">&times;</span>
+                <h1>hack the government</h1>
+                <img src="assets/img/portfolio/thumbnails/3-1.jpg" alt="Project 27">
+                <p>I participated in hack the government twice the first time i ended up third of the students the second one i didn't really have time to participate because of my internship but i still found some very nice bugs even tho they were duplicates and ended up 31st</p>
+                <p>what i learned:</p>
+                <ul>
+                  <li>web pentesting</li>
+                  <li>teamwork with many people i have never met</li>
+                  <li>time management during a ctf</li>
+                  <li>report writing</li>
+                  <li>alot about security clearances what they entail and how to obtain them</li>
+                </ul>
+              </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+          <div class="card" onclick="openModal30()">
+            <img class="card-img-top" src="images/2025-11-27-102046_hyprshot.png" alt="Hack the boo">
+              <div class="card-body">
+                <h5 class="card-title">numerous ctf challanges</h5>
+                <p class="card-text">I have participated in many ctf challanges like the cscbe, hack the future, hack the box, tryhackme 24h reply challange and even more also multiple editions of each. I liked the hack the box ones the best in hack the boo which was the halloween ctf i did pretty well for example ending 16th out of 2892 players.</p>
+                    <p class="card-text"></p>
+              </div>
+            </div>
+            <div id="myModal30" class="modal">
+              <div class="modal-content">
+                <span class="close" onclick="closeModal30()">&times;</span>
+                <h1>numerous ctf challanges</h1>
+                <img src="images/2025-11-27-102046_hyprshot.png" alt="Hack the boo">
+                <p>I have participated in many ctf challanges like the cscbe, hack the future, hack the box, tryhackme 24h reply challange and even more also multiple editions of each. I liked the hack the box ones the best in hack the boo which was the halloween ctf i did pretty well for example ending 16th out of 2892 players.</p>
+                <p>what i learned:</p>
+                <ul>
+                  <li>ethical hacking and pentesting methodology</li>
+                  <li>Problem-solving under pressure</li>
+                </ul>
+              </div>
+            </div>
+        </div>
+        </div>
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
     <script src="js/scripts.js"></script>
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>

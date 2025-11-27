@@ -1,13 +1,57 @@
 .avatar{
   width: 300px;
 }
+/* Last-resort overrides for modal compactness (after Bootstrap rules) */
+body .modal {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+body .modal[style*="display:flex"], body .modal.show {
+  display: flex !important;
+}
+body .modal .modal-content {
+      width: calc(100% - 2.25rem) !important;
+      max-width: 360px !important;
+      max-height: calc(70vh - 2rem) !important;
+      overflow-y: auto !important;
+      padding: 8px !important;
+      border-radius: 6px !important;
+    }
+body .modal .modal-content img {
+    max-height: 96px !important;
+  width: auto !important;
+  object-fit: cover !important;
+  display: block !important;
+  margin: 0.25rem auto 0.6rem !important;
+}
+body .modal .modal-content h1,
+body .modal .modal-content h5 {
+    font-size: 1rem !important;
+    margin-bottom: 0.4rem !important;
+  }
+@media (min-width: 1200px) {
+    body .modal .modal-content {
+      max-width: 420px !important;
+    }
+  }
+
 .card-img-top {
     width: 100%;
     object-fit: cover; 
+    height: 200px;
+}
+
+.card .card-body {
+  flex: 1 1 auto;
 }
 
 .card {
-    transition: transform .2s;
+  transition: transform .2s;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .card:hover {
@@ -51,12 +95,17 @@ svg{
     --bs-modal-footer-bg: #f5f5f5;
   }
   .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; 
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; 
-  }
+      background-color: #fefefe;
+      margin: 5% auto; /* vertically and centered */
+      padding: 14px;
+      border: 1px solid #888;
+      width: 88%;
+      max-width: 600px; /* keeps popups reasonably narrow */
+      max-height: 80vh; /* prevents popups from exceeding viewport height */
+      overflow-y: auto; /* enable scrolling inside the modal if content is long */
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    }
   
   .close {
     color: #aaa;
@@ -71,6 +120,112 @@ svg{
     text-decoration: none;
     cursor: pointer;
   }
+.modal-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* smaller heading and image sizing inside modals */
+.modal-content h1 {
+  font-size: 1.5rem;
+  margin-top: 0;
+}
+.modal-content img {
+  display: block;
+  margin: 0.35rem auto 0.8rem;
+  max-height: 220px; /* keep modal compact */
+}
+
+/* Stronger overrides to ensure modals stay compact and don't expand to full viewport */
+body .modal {
+  display: none; /* default state */
+  align-items: center; /* for flex-vertical centering if you switch to flex */
+  justify-content: center;
+}
+body .modal .modal-content {
+  width: calc(100% - 3rem) !important;
+  max-width: 600px !important;
+  max-height: calc(80vh - 2rem) !important;
+  overflow-y: auto !important;
+}
+
+/* Keep modal images constrained so they don't force modal expansion */
+body .modal .modal-content img {
+  width: auto;
+  max-width: 100% !important;
+  max-height: 220px !important;
+  object-fit: cover !important;
+}
+
+/* Make headings a bit smaller in modal content to reduce vertical space */
+body .modal .modal-content h1,
+body .modal .modal-content h5 {
+  font-size: 1.25rem;
+  margin: 0 0 0.5rem 0;
+}
+
+@media (min-width: 992px) {
+  .modal-content {
+    width: 70%;
+    max-width: 720px;
+  }
+}
+
+/*
+  Final / Last-Resort Overrides
+  Ensure the modal popups stay compact across all breakpoints and override any
+  earlier Bootstrap or theme rules. These rules intentionally use a strong
+  selector chain and !important to ensure they win in cascade order.
+*/
+body .modal,
+body .modal[style*="display:flex"],
+body .modal.show {
+  display: none; /* default */
+  align-items: center;
+  justify-content: center;
+}
+body .modal[style*="display:flex"], body .modal.show {
+  display: flex !important; /* ensure our JS's display:flex is used */
+}
+
+/* Keep modal content small and prevent expansion to full viewport width */
+body .modal .modal-content {
+  width: auto !important;
+  max-width: 360px !important;
+  min-width: 280px !important; /* prevents overly tiny modal on very narrow screens */
+  max-height: calc(70vh - 1rem) !important;
+  padding: 8px !important;
+  overflow-y: auto !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25) !important;
+  border-radius: 6px !important;
+  box-sizing: border-box !important;
+}
+
+/* Force smaller images inside modal content */
+body .modal .modal-content img {
+  max-width: 100% !important;
+  max-height: 96px !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: cover !important;
+  display: block !important;
+  margin: 0.2rem auto 0.6rem !important;
+}
+
+/* Slightly larger limit on super-wide screens */
+@media (min-width: 1200px) {
+  body .modal .modal-content {
+    max-width: 420px !important;
+  }
+}
+
+/* Ensure that media queries that try to set .modal-content width won't override above */
+@media (min-width: 992px) {
+  body .modal .modal-content {
+    width: auto !important;
+    max-width: 420px !important;
+  }
+}
 nav{
   background-color: #706c54;  
 }
@@ -8011,7 +8166,7 @@ textarea.form-control-lg {
 }
 
 .fs-6 {
-  font-size: 1rem !important;
+  font-size: 0.95rem !important;
 }
 
 .fst-italic {
@@ -11071,4 +11226,82 @@ header.masthead h1, header.masthead .h1 {
 }
 #portfolio .container-fluid .portfolio-box:hover .portfolio-box-caption, #portfolio .container-sm .portfolio-box:hover .portfolio-box-caption, #portfolio .container-md .portfolio-box:hover .portfolio-box-caption, #portfolio .container-lg .portfolio-box:hover .portfolio-box-caption, #portfolio .container-xl .portfolio-box:hover .portfolio-box-caption, #portfolio .container-xxl .portfolio-box:hover .portfolio-box-caption {
   opacity: 1;
+}
+/*
+  End-of-file final overrides (highest priority)
+  Added to ensure modal sizing is compact and enforced after all other rules,
+  even those included from Bootstrap or the theme.
+*/
+body .modal[style*="display:flex"], body .modal.show {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+body .modal .modal-content {
+  width: calc(100% - 2rem) !important;
+  max-width: 960px !important; /* doubled from 480 => 960 */
+  padding: 22px 16px 16px 16px !important; /* more top spacing to avoid overlap with close button */
+  max-height: calc(90vh - 1rem) !important;
+  overflow-y: auto !important;
+  border-radius: 8px !important;
+  box-sizing: border-box !important;
+}
+body .modal .modal-content img {
+  width: 100% !important; /* force image to take modal width */
+  max-width: 100% !important;
+  height: auto !important; /* preserve aspect ratio */
+  max-height: calc(80vh - 4rem) !important; /* prevents image from exceeding viewport height */
+  object-fit: contain !important;
+  display: block !important;
+  margin: 0.25rem 0.25rem 0.6rem 0.25rem !important; /* small outside margin for breathing room */
+}
+
+/* Closer styling: make the X button prominent and anchored in the top-right */
+body .modal .modal-content {
+  position: relative !important; /* anchor absolute positioned close button */
+}
+body .modal .close {
+  position: absolute !important;
+  top: 12px !important;
+  right: 12px !important;
+  width: 44px !important;
+  height: 44px !important;
+  line-height: 44px !important;
+  text-align: center !important;
+  border-radius: 50% !important;
+  background: rgba(0,0,0,0.8) !important;
+  color: #fff !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35) !important;
+  cursor: pointer !important;
+  z-index: 60 !important;
+  float: none !important;
+  border: none !important;
+  padding: 0 !important;
+}
+body .modal .close:hover {
+  transform: scale(1.06) !important;
+  background: rgba(0,0,0,0.9) !important;
+}
+body .modal .close:focus {
+  outline: 2px solid var(--bs-secondary) !important;
+}
+@media (min-width: 992px) {
+  body .modal .modal-content {
+    max-width: 1120px !important; /* increase for medium screens */
+  }
+}
+@media (min-width: 576px) {
+  body .modal .modal-content {
+    min-width: 420px !important;
+  }
+}
+@media (min-width: 1200px) {
+  body .modal .modal-content {
+    max-width: 1360px !important; /* large desktop */
+  }
+  body .modal .modal-content img {
+    max-height: calc(80vh - 3rem) !important; /* take up more visual area but still within viewport */
+  }
 }

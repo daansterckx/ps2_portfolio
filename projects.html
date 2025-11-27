@@ -21,12 +21,12 @@
                 <li class="nav-item"><a class="nav-link" href="internship.html">Internship</a></li>
                 <li class="nav-item"><a class="nav-link" href="personal-projects.html">Personal Projects</a></li>
             </ul>
+            
         </div>
     </div>
 </nav>
-    
     <div class="container">
-  <h1 class="text-center my-4">School Projects</h1>
+      <h1 class="text-center my-4">School Projects</h1>
         <div class="row">
             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
               <div class="card" onclick="openModal1()">
@@ -40,14 +40,14 @@
             </div>
             <div id="myModal1" class="modal">
               <div class="modal-content">
-                <span class="close" onclick="closeModal1()">&times;</span>
+                <button class="close" type="button" aria-label="Close" onclick="closeModal1()">&times;</button>
                 <h1>pentesting project</h1>
                 <p>in this project i was given a vulnerable website hosted in a docker container with ubuntu. The goal of the project was to find as many vulnerabilities as possible and then make a documentation for your findings. I had alot of fun in this project since i love pentesting and i'm also pretty proud of my result as i found a total of 3 vulnerabilities</p>
                 <h2>what i found</h2>
                 <ul>
-                    <li>sql injection</li>
-                    <li>xxs</li>
-                    <li>vertical privilege escalation</li>
+                  <li>sql injection</li>
+                  <li>xxs</li>
+                  <li>vertical privilege escalation</li>
                 </ul>
               </div>
             </div>
@@ -64,12 +64,13 @@
             </div>
             <div id="myModal2" class="modal">
               <div class="modal-content">
-                <span class="close" onclick="closeModal2()">&times;</span>
+                <button class="close" type="button" aria-label="Close" onclick="closeModal2()">&times;</button>
                 <h1>java</h1>
                 <p>In this project i had to make a webapp in java that displayed info about a zoo. This was a very fun project i like writing code in java.</p>
                 <p>the webapp had a bunch of functionalities including a search and some inventories where animals could be stored and devided in some categories like mammels or sea creatures</p>
               </div>
             </div>
+
             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
               <div class="card" onclick="openModal3()">
                 <video controls>
@@ -83,9 +84,10 @@
                   </div>
                 </div>
             </div>
+
             <div id="myModal3" class="modal">
               <div class="modal-content">
-                <span class="close" onclick="closeModal3()">&times;</span>
+                <button class="close" type="button" aria-label="Close" onclick="closeModal3()">&times;</button>
                 <h1>se&a project</h1>
                 <p>This project was very interesting and it tought me alot. Me and my team made a system to track children. We did this with a webapp hosted on an orangepi and an esp with a gps module connected to it the esp would connect to the orangepi over wifi and would send it's location to it with post requests</p>
                 <p>there were other functionalities as well like marking forbidden areas for the children</p>
@@ -106,25 +108,50 @@
                   </div>
               </div>
           </div>
+          <!-- SOC card moved from personal projects -->
+          <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+            <div class="card" onclick="openModal31()">
+              <img class="card-img-top" src="images/monkey.png" alt="SOC">
+              <div class="card-body">
+                <h5 class="card-title">SOC (Security Operations Center)</h5>
+                <p class="card-text">A self-hosted SOC that integrates Wazuh, virustotal, shuffle, Velociraptor and infection monkey.</p>
+                <p class="card-text"></p>
+              </div>
+            </div>
+            <div id="myModal31" class="modal">
+              <div class="modal-content">
+                <button class="close" type="button" aria-label="Close" onclick="closeModal31()">&times;</button>
+                <h1>SOC (Security Operations Center)</h1>
+                <img src="images/monkey.png" alt="SOC">
+                <p>This is the same soc as the one i made in my personal projects only it was way less advanced when i had to do it for school because i have kept working on it.</p>
+                <p>what i learned:</p>
+                <ul>
+                  <li>SIEM rule tuning and alert triage (Wazuh)</li>
+                  <li>Automated response and orchestration with n8n</li>
+                  <li>Threat intel and case management with OpenCTI</li>
+                  <li>Endpoint forensics with Velociraptor</li>
+                </ul>
+              </div>
+            </div>
+          </div>
           <div id="myModal5" class="modal">
             <div class="modal-content">
-              <span class="close" onclick="closeModal5()">&times;</span>
+              <button class="close" type="button" aria-label="Close" onclick="closeModal5()">&times;</button>
               <h1>datacenter technology cluster</h1>
               <img src="/images/Screenshot 2024-05-13 133737.png"  alt="wazuh">
               <div class="card-body">
                   <h5 class="card-title">My team and i built a cluster of servers into a server rack in the datacenter, i focussed mainly on the security of the servers. I also helped with installing all the necessary software on the server like esxi and vcenter. I also configured part of the firewall</h5>
-                  <p class="card-text">I liked this project alot i specifically when i installed wazuh a cybersecurity tool that scans our machines for safety and even scans files on the system with virustotal to check if they are not virusses i think it's super cool.</p>
+                  <p class="card-text">I liked this project alot i specifically liked installing wazuh a cybersecurity tool that scans our machines for safety and even scans files on the system with virustotal to check if they are not virusses i think it's super cool.</p>
                   <p>in the screenshot you can see the wazuh detecting a virus with virustotal. As you can see the first 3 scans returned 0 meaning it wasn't a virus but the other 2 returned 1 which means it is a virus. This happens automatically with all files that get added, deleted or changed in certain folders of your choice.</p>
               </div>
             </div>
           </div>
-        </div>
+          </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
     <script src="js/scripts.js"></script>
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
     <script src="script.js"></script>
-  <!-- jQuery/Popper/Bootstrap 4 removed: using Bootstrap 5 bundle for JS -->
 </body>
 </html>
