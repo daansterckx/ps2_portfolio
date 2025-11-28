@@ -15,6 +15,13 @@ window.addEventListener('DOMContentLoaded', event => {
         if (!navbarCollapsible) {
             return;
         }
+        // If the page does not include the hero masthead, keep the navbar in the
+        // 'shrink' state by default so the header is visible on light backgrounds.
+        const hasMasthead = document.body.querySelector('header.masthead') !== null;
+        if (!hasMasthead) {
+            navbarCollapsible.classList.add('navbar-shrink');
+            return;
+        }
         if (window.scrollY === 0) {
             navbarCollapsible.classList.remove('navbar-shrink')
         } else {

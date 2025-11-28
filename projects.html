@@ -8,8 +8,8 @@
   <!-- Custom overrides (portfolio thumbnails, overlay, lightbox caption) -->
   <link rel="stylesheet" href="css/custom.css">
 </head>
-<body>
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+<body class="theme-cyberpunk">
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3 navbar-shrink" id="mainNav">
     <div class="container px-4 px-lg-5">
         <a class="navbar-brand" href="#page-top">Daan Sterckx</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -17,7 +17,7 @@
             <ul class="navbar-nav ms-auto my-2 my-lg-0">
                 <li class="nav-item"><a class="nav-link" href="index.html">home</a></li>
                 <li class="nav-item"><a class="nav-link" href="cv.html">cv</a></li>
-                <li class="nav-item"><a class="nav-link" href="projects.html">School Projects</a></li>
+                <li class="nav-item"><a class="nav-link active" href="projects.html">School Projects</a></li>
                 <li class="nav-item"><a class="nav-link" href="internship.html">Internship</a></li>
                 <li class="nav-item"><a class="nav-link" href="personal-projects.html">Personal Projects</a></li>
             </ul>
@@ -25,11 +25,12 @@
         </div>
     </div>
 </nav>
-    <div class="container">
+    <div class="container-fluid project-box-wrapper">
       <h1 class="text-center my-4">School Projects</h1>
+      <h3>there are many more school projects but i decided to only list the ones i enjoyed the most</h3>
         <div class="row">
             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-              <div class="card" onclick="openModal1()">
+              <div class="card card-accent" onclick="openModal1()">
                 <img class="card-img-top" src="images/project1.png" alt="Project 1">
                   <div class="card-body">
                     <h5 class="card-title">pentesting project</h5>
@@ -53,7 +54,7 @@
             </div>
             
             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-              <div class="card" onclick="openModal2()">
+              <div class="card card-accent" onclick="openModal2()">
                 <img class="card-img-top" src="images/java.png" alt="Project 2">
                   <div class="card-body">
                     <h5 class="card-title">Project java</h5>
@@ -72,7 +73,7 @@
             </div>
 
             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-              <div class="card" onclick="openModal3()">
+              <div class="card card-accent" onclick="openModal3()">
                 <video controls>
                   <source src="/images/se&a project.mp4" type="video/mp4">
                         Your browser does not support the video tag.
@@ -100,17 +101,42 @@
               </div>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-              <div class="card" onclick="openModal5()">
-                  <img src="/images/Screenshot 2024-05-13 133802.png" alt="wazuh">
+              <div class="card card-accent" onclick="openModal5()">
+                  <img class="card-img-top" src="/images/Screenshot 2024-05-13 133802.png" alt="wazuh">
                   <div class="card-body">
                     <h5 class="card-title">My team and i built a cluster of servers into a server rack in the datacenter, i focussed mainly on the security of the servers. I also helped with installing all the necessary software on the server like esxi and vcenter.</h5>
                     <p class="card-text">I liked this project alot i specifically when i installed wazuh a cybersecurity tool that scans our machines for safety and even scans files on the system with virustotal to check if they are not virusses which is super cool in my opinion.</p>
                   </div>
               </div>
           </div>
+          <!-- New placeholder project card -->
+          <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+            <div class="card card-accent" onclick="openModal32()">
+              <img class="card-img-top" src="images/fog.png" alt="Project 32">
+              <div class="card-body">
+                <h5 class="card-title">fog server</h5>
+                <p class="card-text">I setup a fog server this was my gip in high school but i still want to include it because it was a very fun and interesting project. We needed to be able to take images from all the school computers and quickly deploy them if a student messed something up about his install. I set it up completely including a domain controller and i know they were still using it last year i dont know about this year.</p>
+                <p class="card-text"></p>
+              </div>
+            </div>
+            <div id="myModal32" class="modal">
+              <div class="modal-content">
+                <button class="close" type="button" aria-label="Close" onclick="closeModal32()">&times;</button>
+                <h1>fog server</h1>
+                <img src="images/fog.png" alt="fog server">
+                <p>I setup a fog server this was my gip in high school but i still want to include it because it was a very fun and interesting project. We needed to be able to take images from all the school computers and quickly deploy them if a student messed something up about his install. I set it up completely including a domain controller and i know they were still using it last year i dont know about this year.</p>
+                <p>What I learned:</p>
+                <ul>
+                  <li>pxe booting</li>
+                  <li>network imaging</li>
+                  <li>server management</li>
+                </ul>
+              </div>
+            </div>
+          </div>
           <!-- SOC card moved from personal projects -->
           <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-            <div class="card" onclick="openModal31()">
+            <div class="card card-accent" onclick="openModal31()">
               <img class="card-img-top" src="images/monkey.png" alt="SOC">
               <div class="card-body">
                 <h5 class="card-title">SOC (Security Operations Center)</h5>
@@ -130,6 +156,33 @@
                   <li>Automated response and orchestration with n8n</li>
                   <li>Threat intel and case management with OpenCTI</li>
                   <li>Endpoint forensics with Velociraptor</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- New OPNsense Firewall project card -->
+          <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+              <div class="card card-accent" onclick="openModal33()">
+              <img class="card-img-top" src="images/rurant.png" alt="Frank — the Talking Bench">
+              <div class="card-body">
+                <h5 class="card-title">Frank the Talking Bench</h5>
+                <p class="card-text">For Project 4.0, I worked on "Frank — the Talking Bench"; together with my team, we delivered a great project.</p>
+                <p>you can find it here: <a href="https://github.com/P-4-B-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></a></p>
+              </div>
+            </div>
+            <div id="myModal33" class="modal">
+              <div class="modal-content">
+                <button class="close" type="button" aria-label="Close" onclick="closeModal33()">&times;</button>
+                <h1>Frank the Talking Bench</h1>
+                <img src="images/rurant.png" alt="Frank — the Talking Bench">
+                <p>Our assignment was to create a bench that people could sit on which, when someone sits down the bench would ask questions about their opinions regarding their town or village. We implemented this behavior using AI.</p>
+                <p>What I did:</p>
+                <ul>
+                  <li>helped setup ci/cd pipeline</li>
+                  <li>helped write the client side code for the ai processing and api requests</li>
+                  <li>setup all the operating system stuff for the pi (including drivers for all the hardware and stuff)</li>
+                  <li>helped to set up all the hosting needed for the bench</li>
+                  <li>automated all the dependencies and turned script into a service you can start automatically on boot</li>
                 </ul>
               </div>
             </div>

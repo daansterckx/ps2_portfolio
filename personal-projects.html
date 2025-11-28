@@ -6,8 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styke.css">
+    <link rel="stylesheet" href="css/custom.css">
 </head>
-<body>
+<body class="theme-cyberpunk">
   <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
     <div class="container px-4 px-lg-5">
         <a class="navbar-brand" href="#top">Daan Sterckx</a>
@@ -18,17 +19,17 @@
                 <li class="nav-item"><a class="nav-link" href="cv.html">cv</a></li>
                 <li class="nav-item"><a class="nav-link" href="projects.html">School Projects</a></li>
                 <li class="nav-item"><a class="nav-link" href="internship.html">Internship</a></li>
-                <li class="nav-item"><a class="nav-link" href="personal-projects.html">Personal Projects</a></li>
+                <li class="nav-item"><a class="nav-link active" href="personal-projects.html">Personal Projects</a></li>
             </ul>
         </div>
     </div>
 </nav>
-    <div class="container">
+    <div class="container-fluid project-box-wrapper">
       <h1 class="text-center my-4">Personal Projects</h1>
       <p class="lead">A collection of personal projects and experiments.</p>
       <div class="row">
         <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-          <div class="card" onclick="openModal1()">
+          <div class="card card-accent" onclick="openModal1()">
             <img class="card-img-top" src="images/soc.png" alt="Project 1">
               <div class="card-body">
                 <h5 class="card-title">soc</h5>
@@ -62,7 +63,7 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-          <div class="card" onclick="openModal2()">
+          <div class="card card-accent" onclick="openModal2()">
             <img class="card-img-top" src="images/owebui.png" alt="AI Server">
               <div class="card-body">
                 <h5 class="card-title">AI Server</h5>
@@ -89,7 +90,7 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-          <div class="card" onclick="openModal4()">
+          <div class="card card-accent" onclick="openModal4()">
             <img class="card-img-top" src="images/kali.png" alt="Perfect Kali Machine">
               <div class="card-body">
                 <h5 class="card-title">Perfect Kali Machine</h5>
@@ -120,7 +121,7 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-          <div class="card" onclick="openModal5()">
+          <div class="card card-accent" onclick="openModal5()">
             <img class="card-img-top" src="images/provic.png" alt="Project 4">
               <div class="card-body">
                 <h5 class="card-title">professional victim</h5>
@@ -144,7 +145,7 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-          <div class="card" onclick="openModal6()">
+          <div class="card card-accent" onclick="openModal6()">
             <img class="card-img-top" src="images/tools.png" alt="Project 5">
               <div class="card-body">
                 <h5 class="card-title">general purpose support servers for pentesting</h5>
@@ -172,7 +173,7 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-          <div class="card" onclick="openModal7()">
+          <div class="card card-accent" onclick="openModal7()">
             <img class="card-img-top" src="images/torrents.png" alt="Project 6">
               <div class="card-body">
                 <h5 class="card-title">jellyfin+radarr+sonarr media server</h5>
@@ -198,7 +199,7 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-          <div class="card" onclick="openModal8()">
+          <div class="card card-accent" onclick="openModal8()">
             <img class="card-img-top" src="images/rocketchat.png" alt="Project 7">
               <div class="card-body">
                 <h5 class="card-title">rocket chat</h5>
@@ -221,7 +222,7 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-          <div class="card" onclick="openModal9()">
+          <div class="card card-accent" onclick="openModal9()">
             <img class="card-img-top" src="images/gitlab.png" alt="Project 8">
               <div class="card-body">
                 <h5 class="card-title">self hosted gitlab instance</h5>
@@ -247,7 +248,7 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-          <div class="card" onclick="openModal10()">
+          <div class="card card-accent" onclick="openModal10()">
             <img class="card-img-top" src="images/amp.png" alt="Project 9">
               <div class="card-body">
                 <h5 class="card-title">game server with AMP</h5>
@@ -273,7 +274,7 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-          <div class="card" onclick="openModal11()">
+          <div class="card card-accent" onclick="openModal11()">
             <img class="card-img-top" src="images/wazuh.png" alt="Project 10">
               <div class="card-body">
                 <h5 class="card-title">wazuh</h5>
@@ -298,7 +299,7 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-          <div class="card" onclick="openModal12()">
+          <div class="card card-accent" onclick="openModal12()">
             <img class="card-img-top" src="images/vaultwarden.png" alt="Project 11">
               <div class="card-body">
                 <h5 class="card-title">vaultwarden</h5>
@@ -321,7 +322,7 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-          <div class="card" onclick="openModal13()">
+          <div class="card card-accent" onclick="openModal13()">
             <img class="card-img-top" src="images/n8n.png" alt="Project 12">
               <div class="card-body">
                 <h5 class="card-title">n8n</h5>
@@ -345,7 +346,7 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-          <div class="card" onclick="openModal14()">
+          <div class="card card-accent" onclick="openModal14()">
             <img class="card-img-top" src="images/homeass.png" alt="Project 13">
               <div class="card-body">
                 <h5 class="card-title">homeassistant</h5>
@@ -370,7 +371,7 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-          <div class="card" onclick="openModal15()">
+          <div class="card card-accent" onclick="openModal15()">
             <img class="card-img-top" src="images/seafile.png" alt="Project 14">
               <div class="card-body">
                 <h5 class="card-title">seafile</h5>
@@ -393,7 +394,7 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-          <div class="card" onclick="openModal16()">
+          <div class="card card-accent" onclick="openModal16()">
             <img class="card-img-top" src="images/pihole.png" alt="Project 15">
               <div class="card-body">
                 <h5 class="card-title">Pi hole dns</h5>
@@ -416,7 +417,7 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-          <div class="card" onclick="openModal17()">
+          <div class="card card-accent" onclick="openModal17()">
             <img class="card-img-top" src="images/netbird.png" alt="Project 16">
               <div class="card-body">
                 <h5 class="card-title">netbird</h5>
@@ -439,7 +440,7 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-          <div class="card" onclick="openModal18()">
+          <div class="card card-accent" onclick="openModal18()">
             <img class="card-img-top" src="images/authentik.png" alt="Project 17">
               <div class="card-body">
                 <h5 class="card-title">authentik</h5>
@@ -463,7 +464,7 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-          <div class="card" onclick="openModal19()">
+          <div class="card card-accent" onclick="openModal19()">
             <img class="card-img-top" src="images/opencti.png" alt="Project 18">
               <div class="card-body">
                 <h5 class="card-title">opencti</h5>
@@ -493,7 +494,7 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-          <div class="card" onclick="openModal20()">
+          <div class="card card-accent" onclick="openModal20()">
             <img class="card-img-top" src="images/sliver.png" alt="Project 19">
               <div class="card-body">
                 <h5 class="card-title">sliver</h5>
@@ -516,7 +517,7 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-          <div class="card" onclick="openModal21()">
+          <div class="card card-accent" onclick="openModal21()">
             <img class="card-img-top" src="images/awareness.png" alt="Project 20">
               <div class="card-body">
                 <h5 class="card-title">a few websites to spread awareness</h5>
@@ -539,7 +540,7 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-          <div class="card" onclick="openModal22()">
+          <div class="card card-accent" onclick="openModal22()">
             <img class="card-img-top" src="images/daloradius.png" alt="Project 21">
               <div class="card-body">
                 <h5 class="card-title">daloradius</h5>
@@ -562,7 +563,7 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-          <div class="card" onclick="openModal23()">
+          <div class="card card-accent" onclick="openModal23()">
             <img class="card-img-top" src="images/docs.png" alt="docmost">
               <div class="card-body">
                 <h5 class="card-title">docmost</h5>
@@ -584,7 +585,7 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-          <div class="card" onclick="openModal24()">
+          <div class="card card-accent" onclick="openModal24()">
             <img class="card-img-top" src="images/bot.png" alt="discord bot">
               <div class="card-body">
                 <h5 class="card-title">discord bot</h5>
@@ -609,7 +610,7 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-          <div class="card" onclick="openModal25()">
+          <div class="card card-accent" onclick="openModal25()">
             <img class="card-img-top" src="images/proxmox.png" alt="Project 23">
               <div class="card-body">
                 <h5 class="card-title">proxmox cluster</h5>
@@ -634,7 +635,7 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-          <div class="card" onclick="openModal26()">
+          <div class="card card-accent" onclick="openModal26()">
             <img class="card-img-top" src="images/arch.png" alt="Project 24">
               <div class="card-body">
                 <h5 class="card-title">my perfect os</h5>
@@ -659,7 +660,7 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-          <div class="card" onclick="openModal27()">
+          <div class="card card-accent" onclick="openModal27()">
             <img class="card-img-top" src="images/2025-11-27-102046_hyprshot.png" alt="Project 25">
               <div class="card-body">
                 <h5 class="card-title">hack the box</h5>
@@ -684,7 +685,7 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-          <div class="card" onclick="openModal28()">
+          <div class="card card-accent" onclick="openModal28()">
             <img class="card-img-top" src="images/portswig.png" alt="Project 26">
               <div class="card-body">
                 <h5 class="card-title">portswigger courses</h5>
@@ -709,7 +710,7 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-          <div class="card" onclick="openModal29()">
+          <div class="card card-accent" onclick="openModal29()">
             <img class="card-img-top" src="assets/img/portfolio/thumbnails/3-1.jpg" alt="Project 27">
               <div class="card-body">
                 <h5 class="card-title">hack the government</h5>
@@ -735,7 +736,7 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-          <div class="card" onclick="openModal30()">
+          <div class="card card-accent" onclick="openModal30()">
             <img class="card-img-top" src="images/2025-11-27-102046_hyprshot.png" alt="Hack the boo">
               <div class="card-body">
                 <h5 class="card-title">numerous ctf challanges</h5>

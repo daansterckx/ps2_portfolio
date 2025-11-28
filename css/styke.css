@@ -295,8 +295,8 @@ nav a{
   --bs-body-font-size: 1rem;
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.5;
-  --bs-body-color: #314311;
-  --bs-body-bg: #314311;
+  --bs-body-color: #314311; /* dark text color for readability */
+  --bs-body-bg: #ffffff; /* background should be light so headings and text are visible */
   --bs-border-width: 1px;
   --bs-border-style: solid;
   --bs-border-color: #dee2e6;

@@ -1,3 +1,123 @@
+/* Blue accent line for personal project cards */
+.card.card-accent {
+  position: relative;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 12px 0 #00fff733;
+  overflow: visible; /* allow the accent pseudo-element to sit outside without shrinking content */
+}
+
+.card.card-accent::before {
+  content: "";
+  position: absolute;
+  /* position the stripe visually to the left without taking layout space */
+  left: -6px;
+  top: 0.4rem;
+  bottom: 0.4rem;
+  width: 6px;
+  background: linear-gradient(180deg, #00fff7 0%, #2b82ff 100%);
+  border-radius: 4px;
+  box-shadow: 0 0 8px #00fff733;
+  pointer-events: none;
+}
+
+/* Hide stripe inside modals to avoid duplicate visual */
+.modal .card.card-accent::before,
+.modal .card.card-accent {
+  display: none !important;
+}
+
+/* Ensure columns are flex containers and cards stretch to match heights */
+.project-box-wrapper .row > [class*="col-"],
+.personal-projects-wrapper .row > [class*="col-"] {
+  display: flex;
+  align-items: stretch;
+}
+
+/* Cards should fill their column vertically and use a consistent minimum height */
+.project-box-wrapper .card,
+.personal-projects-wrapper .card,
+.project-box-wrapper .card.card-accent,
+.personal-projects-wrapper .card.card-accent {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 360px !important; /* fixed height for consistent appearance */
+}
+
+/* Force cards to fill their column width so the card element itself
+   doesn't become narrower than its parent column in some browsers */
+.project-box-wrapper .card,
+.project-box-wrapper .card.card-accent {
+  width: 100% !important;
+  flex: 1 1 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Ensure card bodies expand to take available space */
+.project-box-wrapper .card .card-body,
+.personal-projects-wrapper .card .card-body {
+  flex: 1 1 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: auto !important; /* make the body scroll if content overflows */
+}
+
+/* Make images uniform for predictable layout */
+.project-box-wrapper .card-img-top,
+.personal-projects-wrapper .card-img-top,
+.card-img-top {
+  height: 200px !important;
+  object-fit: cover !important;
+}
+
+/* Slightly taller cards on larger screens */
+@media (min-width: 992px) {
+  .project-box-wrapper .card,
+  .personal-projects-wrapper .card {
+    height: 420px !important;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .project-box-wrapper .card,
+  .personal-projects-wrapper .card {
+    height: 320px !important;
+  }
+}
+/* ABSOLUTE OVERRIDE for Bootstrap grid columns inside .project-box-wrapper */
+/* Only override grid for personal projects page */
+.personal-projects-wrapper .row > [class*="col-"] {
+  width: auto;
+  max-width: auto;
+}
+@media (min-width: 576px) {
+  .personal-projects-wrapper .row > [class*="col-"] {
+    width: 50% !important;
+    max-width: 50% !important;
+  }
+}
+@media (min-width: 992px) {
+  .personal-projects-wrapper .row > [class*="col-"] {
+    width: 33.333333% !important;
+    max-width: 33.333333% !important;
+  }
+}
+/* MAX SPECIFICITY override for Bootstrap columns inside .project-box-wrapper */
+.project-box-wrapper .row > [class*="col-"][style],
+.project-box-wrapper .row > [class*="col-"] {
+  width: auto;
+}
+@media (min-width: 576px) {
+  .project-box-wrapper .row > [class*="col-"][style],
+  .project-box-wrapper .row > [class*="col-"] {
+    width: auto;
+  }
+}
+@media (min-width: 992px) {
+  .project-box-wrapper .row > [class*="col-"][style],
+  .project-box-wrapper .row > [class*="col-"] {
+    width: auto;
+  }
+}
 /* Custom overrides for portfolio images - make all thumbnails uniform size */
 
 /* Target the portfolio-box container and ensure the grid items are cropped consistently */
@@ -90,6 +210,7 @@
 #portfolio .container-lg .portfolio-box .portfolio-box-caption .project-info,
 #portfolio .container-xl .portfolio-box .portfolio-box-caption .project-info,
 #portfolio .container-xxl .portfolio-box .portfolio-box-caption .project-info {
+
   font-family: "Merriweather Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 0.85rem;
   font-weight: 600;
@@ -154,8 +275,29 @@
 /* No extra override for .project-category - the theme stylesheet keeps existing look. */
 
 /* Internship page specific improvements */
+/* Keep global body offset to avoid fixed navbar overlapping content */
+body {
+  padding-top: 7rem; /* account for fixed navbar height + extra spacing */
+}
+
 #internship {
   padding-top: 5.5rem; /* account for fixed navbar */
+}
+
+/* Ensure heading color is visible inside page containers (override theme white headings in some contexts) */
+body .container h1,
+body .container h2,
+body .container h3,
+body .container .h1,
+body .container .h2,
+body .container .h3 {
+  color: var(--bs-body-color) !important;
+}
+
+/* Specifically ensure the projects container header is visible below a fixed navbar */
+#mainNav + .container h1, #mainNav + .container h3 {
+  color: var(--bs-body-color) !important;
+  margin-top: 0.25rem; /* minor offset for better spacing */
 }
 
 /* Keep aside sticky on large screens so the content flows nicely */
@@ -233,55 +375,44 @@
    we create a white content wrapper and keep the page background dark. */
 
 /* White content wrapper (cards / main body) for the internship page */
+/* Restyle internship content for cyberpunk theme: darker background and neon accents */
 #internship .internship-content {
-  background: #ffffff;
-  color: #2d2d2d; /* dark text inside the white card */
+  background: linear-gradient(180deg, rgba(6,10,18,0.92), rgba(12,18,30,0.96));
+  color: var(--bs-body-color);
   padding: 2rem;
   border-radius: 0.75rem;
-  box-shadow: 0 6px 24px rgba(0,0,0,0.07);
+  box-shadow: 0 10px 34px rgba(0,0,0,0.6);
+  border-left: 4px solid var(--cyber-accent) !important;
+  max-width: 1100px;
+  margin: 2rem auto;
 }
 
-/* Ensure headings and paragraphs inside the content wrapper are dark */
+/* Ensure headings and paragraphs inside the content wrapper are light for readability */
 #internship .internship-content h1,
 #internship .internship-content h2,
 #internship .internship-content h3,
 #internship .internship-content p,
 #internship .internship-content li {
-  color: #2d2d2d;
+  color: var(--bs-body-color) !important;
 }
 
-/* Keep the aside and portfolio cards styled with darker text on white backgrounds */
+/* Cards inside internship follow the dark glass style */
 #internship .card, #internship .card * {
-  color: rgba(0,0,0,0.88);
+  color: var(--bs-body-color) !important;
 }
-
-/* Avoid white-on-white inside the white content wrapper: give cards a subtle tint */
 #internship .card {
-  background-color: #c6d2c0; /* slightly darker green tint for better contrast */
-  border: 1px solid rgba(0,0,0,0.10);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+  background: rgba(255,255,255,0.02) !important;
+  border: 1px solid rgba(0,255,247,0.04) !important;
+  box-shadow: 0 8px 28px rgba(1,4,12,0.7) !important;
 }
 
-#internship .card-img-top {
-  background-color: transparent; /* images should show without background tint */
-}
+#internship .card-img-top { background-color: transparent; }
 
 /* Accent color for links inside the content wrapper */
-#internship .internship-content a { color: var(--bs-primary); }
+#internship .internship-content a { color: var(--cyber-accent) !important; }
 
-
-/* Make h1 in content smaller and avoid duplicates being visually heavy */
+/* Make h1 in content slightly smaller for balance */
 #internship h1 { font-size: 2rem; }
-
-#internship .internship-content {
-  background: linear-gradient(180deg, #ffffff 0%, #fbfbfc 100%);
-  border-left: 4px solid rgba(49,67,17,0.95); /* subtle green accent */
-}
-
-#internship .internship-content {
-  max-width: 1100px;
-  margin: 2rem auto;
-}
 
 #internship section {
   padding-bottom: 1rem;
@@ -295,4 +426,574 @@
   #internship .col-lg-8 { padding-right: 2rem; }
   #internship .col-lg-4 { padding-left: 2rem; }
 }
+
+/* =========================
+   Strong scoped cyberpunk overrides
+   Applied when <body class="theme-cyberpunk"> is present.
+   These rules use higher specificity and !important for critical props
+   so they reliably override the base theme styles where necessary.
+   ========================= */
+.theme-cyberpunk, body.theme-cyberpunk {
+  --cyber-bg: #06060b;
+  --cyber-accent: #00fff7;
+  --cyber-accent-2: #ff00d6;
+}
+.theme-cyberpunk {
+  background-color: var(--cyber-bg) !important;
+  color: var(--bs-body-color) !important;
+}
+.theme-cyberpunk {
+  /* Replace theme's green primary with neon cyan/magenta accents */
+  --bs-primary: #00fff7 !important;
+  --bs-primary-rgb: 0,255,247 !important;
+  --bs-bg-primary: #071426 !important; /* dark background for .bg-primary */
+  --bs-body-bg: var(--cyber-bg) !important;
+  --bs-body-color: #dfe9ff !important;
+  --bs-light: rgba(255,255,255,0.03) !important;
+}
+
+/* Force Bootstrap utility classes that previously used green to the cyber accent */
+.theme-cyberpunk .bg-primary {
+  background-color: var(--bs-bg-primary) !important;
+  color: var(--bs-body-color) !important;
+}
+.theme-cyberpunk .text-primary,
+.theme-cyberpunk .text-success,
+.theme-cyberpunk .text-green {
+  color: var(--bs-primary) !important;
+}
+.theme-cyberpunk .btn.btn-primary,
+.theme-cyberpunk .btn-primary {
+  /* Darker blueish-purple button gradient */
+  background: linear-gradient(90deg,#1b1033,#4b2bff) !important;
+  border-color: transparent !important;
+  color: #fff !important;
+}
+
+/* catch any leftover explicit green hex usages by forcing key components */
+.theme-cyberpunk header.masthead,
+.theme-cyberpunk .internship-content,
+.theme-cyberpunk .card,
+.theme-cyberpunk .page-section,
+.theme-cyberpunk .lead {
+  color: var(--bs-body-color) !important;
+}
+
+/* Keep masthead subtitle and actions centered for visual consistency */
+.masthead .align-self-baseline { text-align: center !important; }
+.masthead .align-self-baseline .btn { display: inline-block; margin: 0 auto !important; }
+
+/* Ensure the terminal column in the masthead is left-aligned so the terminal window sits to the left */
+/* removed earlier forced left-alignment rules — restore default Bootstrap behavior */
+.masthead .align-self-end { /* restored to Bootstrap defaults */ }
+.masthead .align-self-end .terminal { /* restored to Bootstrap defaults */ }
+/* Keep default column widths — don't force full-width columns here (restored Bootstrap behavior) */
+
+/* Override Bootstrap row centering in masthead so content can be left-aligned */
+/* restore Bootstrap row centering behavior; removed overrides */
+/* .masthead .row.justify-content-center { justify-content: flex-start !important; } */
+/* .masthead .row.text-center { text-align: left !important; } */
+
+/* Terminal header styling */
+.terminal {
+  /* slightly narrower terminal for improved focus */
+  max-width: 580px;
+  margin: 0 auto 1rem; /* center terminal horizontally */
+  position: relative;
+  background: linear-gradient(180deg, rgba(2,6,23,0.85), rgba(4,8,34,0.9));
+  border-radius: 10px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.6), 0 0 40px rgba(0,255,247,0.06) inset;
+  border: 1px solid rgba(0,255,247,0.06);
+  font-family: 'JetBrains Mono', 'Roboto', monospace;
+}
+.terminal-header { display: none !important; }
+.terminal-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 8px rgba(0,0,0,0.6);
+}
+.terminal-dot.red { background:#ff5f56; }
+.terminal-dot.yellow { background:#ffbd2e; }
+.terminal-dot.green { background:#27c93f; }
+.terminal-body { padding: 22px; }
+.terminal { min-height: 90px; }
+/* Use grid to left-align the prompt and center the typed output with cursor */
+.terminal-line {
+  color: var(--cyber-accent);
+  font-size: 1.8rem;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-start; /* align prompt+command to the left */
+}
+.prompt {
+  color: var(--bs-body-color);
+  font-size: 1.8rem;
+  font-family: inherit;
+  font-weight: 500;
+  margin-left: 12px;
+}
+.terminal-output {
+  color: var(--bs-body-color);
+  white-space: pre;
+  min-height: 1.2em;
+  display: inline-block;
+  margin: 0 0 0 12px; /* small left margin to separate from prompt */
+  text-align: left;
+  max-width: 460px; /* constrain width to match narrower terminal */
+}
+.terminal-cursor {
+  color: var(--cyber-accent);
+  margin-left: 6px;
+  font-weight: 700;
+  animation: blink 1s steps(1) infinite;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+@keyframes blink { 50% { opacity: 0; } }
+
+/* Make terminal responsive on small screens */
+@media (max-width: 767px) {
+  .terminal-line { font-size: 1.2rem; }
+  .terminal { margin: 0 12px 1rem; min-height: 80px; }
+  .prompt { position: static; transform: none; display:inline-block; margin-right:8px; }
+  .terminal-output { margin: 0; text-align:left; }
+}
+
+.terminal-response-line {
+  font-family: inherit;
+  color: var(--bs-body-color);
+  padding: 6px 18px 0 18px;
+  font-size: 1.05rem;
+  white-space: pre;
+  max-width: none !important;
+  margin: 0 !important; /* container alignment handled by padding */
+  padding-left: 18px !important; /* keep baseline padding */
+  display: block !important;
+  position: relative !important;
+  left: 0 !important; /* individual lines will be positioned by the responses container */
+  width: auto !important;
+  text-align: left;
+}
+
+/* Ensure each response line itself is indented under the prompt. Using an
+   !important here guarantees the computed value wins over other centering
+   styles (row text-center, etc.). This keeps responses flush left under
+   `daan@portfolio:~$` even if the container is affected by parent rules. */
+/* Removed per-line left-indent to avoid double-indenting. The responses
+   container receives the horizontal offset (via JS) so each line sits
+   flush under the prompt. */
+
+/* Container for response lines that is positioned under the typed command */
+.terminal-responses {
+  /* Keep responses inside the terminal flow to avoid absolute positioning issues
+     Use prompt width to create a left margin so responses align under the typed command */
+  position: relative !important;
+  margin: 8px 0 0 0 !important;
+  padding: 0 !important;
+  margin-left: 0 !important; /* JS will set inline margin-left based on prompt width */
+  width: auto !important;
+  box-sizing: border-box !important;
+}
+
+/* Force the terminal body to be left-aligned to override any parent centering */
+.terminal .terminal-body { text-align: left !important; }
+.terminal-response-line .response-success {
+  color: var(--cyber-accent-2);
+}
+.terminal-response-line .response-normal {
+  color: var(--bs-body-color);
+}
+
+/* Add a little spacing so responses feel separate from the prompt line */
+.terminal-body > .terminal-response-line:first-of-type { margin-top: 8px; }
+.theme-cyberpunk #mainNav {
+  background: linear-gradient(180deg, rgba(4,6,12,0.98), rgba(4,6,12,0.92)) !important;
+  border-bottom: 1px solid rgba(0,255,247,0.08) !important;
+}
+.theme-cyberpunk #mainNav .navbar-brand { color: var(--cyber-accent) !important; }
+.theme-cyberpunk #mainNav .nav-link, .theme-cyberpunk #mainNav .nav-link:visited { color: rgba(255,255,255,0.9) !important; }
+.theme-cyberpunk #mainNav .nav-link:hover, .theme-cyberpunk #mainNav .nav-link:focus {
+  /* keep text color stable; only add subtle glow on hover/focus */
+  text-shadow: 0 0 12px rgba(0,255,247,0.12) !important;
+}
+.theme-cyberpunk h1, .theme-cyberpunk h2, .theme-cyberpunk h3 { color: #f8fbff !important; }
+.theme-cyberpunk #mainNav .nav-link {
+  position: relative; /* create containing block for underline pseudo-element */
+  padding-bottom: 0.35rem; /* space for underline */
+}
+
+.theme-cyberpunk #mainNav .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 3px;
+  bottom: 0;
+  width: 0%;
+  background: var(--cyber-accent);
+  border-radius: 3px;
+  transition: width 180ms ease;
+}
+
+.theme-cyberpunk #mainNav .nav-link:hover::after,
+.theme-cyberpunk #mainNav .nav-link:focus::after {
+  width: 100%;
+}
+
+/* Keep underline visible for the active/nav-current item */
+.theme-cyberpunk #mainNav .nav-link.active::after,
+.theme-cyberpunk #mainNav .nav-link[aria-current="page"]::after {
+  width: 100%;
+}
+
+/* Override legacy rules that change nav link text color when active/hovered.
+   Ensure the underline is the primary active indicator and keep link text
+   color consistent with the theme. This selector matches the original
+   rule's specificity and runs after because `custom.css` is loaded later. */
+#mainNav .navbar-nav .nav-item .nav-link,
+#mainNav .navbar-nav .nav-item .nav-link:visited,
+#mainNav .navbar-nav .nav-item .nav-link:hover,
+#mainNav .navbar-nav .nav-item .nav-link:focus,
+#mainNav .navbar-nav .nav-item .nav-link.active {
+  color: var(--bs-body-color) !important;
+  text-shadow: none !important;
+}
+.theme-cyberpunk .card { background: rgba(255,255,255,0.02) !important; border: 1px solid rgba(0,255,247,0.06) !important; box-shadow: 0 8px 30px rgba(2,6,23,0.7) !important; }
+.theme-cyberpunk .card .card-title { color: #fff !important; }
+.theme-cyberpunk .card .card-text { color: rgba(255,255,255,0.9) !important; }
+.theme-cyberpunk .card-img-top { border-bottom: 1px solid rgba(0,255,247,0.04) !important; }
+.theme-cyberpunk a { color: var(--cyber-accent) !important; }
+.theme-cyberpunk a:hover { color: var(--cyber-accent-2) !important; }
+.theme-cyberpunk pre, .theme-cyberpunk code { background: rgba(0,0,0,0.6) !important; color: #c9fff7 !important; border-left: 4px solid var(--cyber-accent) !important; }
+.theme-cyberpunk .modal .modal-content { background: linear-gradient(180deg,#071426 0%, #02040b 100%) !important; border-left: 5px solid var(--cyber-accent) !important; }
+.theme-cyberpunk .modal .close { color: var(--cyber-accent) !important; border-color: rgba(0,255,247,0.12) !important; }
+.theme-cyberpunk .btn-primary { background: linear-gradient(90deg,#24144a,#4b2bff) !important; color: #fff !important; border: none !important; }
+.theme-cyberpunk .gallery-badge, .theme-cyberpunk .badge { background: linear-gradient(90deg,var(--cyber-accent),var(--cyber-accent-2)) !important; color: #000 !important; }
+.theme-cyberpunk input, .theme-cyberpunk textarea, .theme-cyberpunk select { background: rgba(255,255,255,0.03) !important; color: var(--bs-body-color) !important; border: 1px solid rgba(255,255,255,0.04) !important; }
+.theme-cyberpunk header.masthead { background-image: linear-gradient(180deg, rgba(18,6,44,0.6), rgba(2,5,12,0.75)), url('../images/flewboximages/nature.jpg') !important; background-size: cover !important; }
+
+/* Temporary debug banner so you can confirm theme loaded quickly
+   Remove this after verification. Visible only when theme class is present. */
+.theme-cyberpunk::before { display: none !important; }
+.theme-cyberpunk body { padding-top: 0 !important; }
+
+/* Make inline GitHub SVG icons white and ensure FontAwesome github icons are white */
+a[href*="github.com"] svg path,
+a[href*="github.com"] svg polygon,
+a[href*="github.com"] svg circle {
+  fill: #fff !important;
+  stroke: #fff !important;
+}
+.fa-github, .fa-brands.fa-github {
+  color: #fff !important;
+}
+
+/* Themed container for project lists (School / Personal) */
+.project-box-wrapper {
+  padding: 1.25rem;
+  border-radius: 0.75rem;
+  background: linear-gradient(180deg, rgba(6,8,18,0.85), rgba(8,12,26,0.92));
+  /* stronger, lighter border and more prominent glow */
+  border: 1px solid rgba(75,43,255,0.28); /* stronger purple border */
+  box-shadow: 0 16px 60px rgba(75,43,255,0.18), /* outer purple glow */
+              0 0 30px rgba(75,43,255,0.10), /* soft spread */
+              0 4px 12px rgba(0,255,247,0.04) inset; /* subtle inner cyan tint */
+  margin-bottom: 1.5rem;
+  overflow: hidden; /* ensure the left accent and inner glow respect rounded corners */
+}
+
+/* Add a cyan/blue left accent stripe similar to the internship page */
+.project-box-wrapper {
+  position: relative;
+  border-left: 4px solid var(--cyber-accent);
+  padding-left: calc(1.25rem + 12px); /* make room for the left accent */
+}
+
+.project-box-wrapper::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  border-top-left-radius: 0.75rem;
+  border-bottom-left-radius: 0.75rem;
+  background: linear-gradient(180deg, rgba(0,255,247,0.95), rgba(0,160,210,0.7));
+  box-shadow: 0 0 24px rgba(0,255,247,0.18), 0 0 8px rgba(0,160,210,0.12);
+  pointer-events: none;
+}
+.project-box-wrapper h1, .project-box-wrapper h3, .project-box-wrapper .lead {
+  color: var(--bs-body-color) !important;
+}
+.project-box-wrapper .card {
+  background: rgba(255,255,255,0.02) !important;
+  border: 1px solid rgba(75,43,255,0.04) !important;
+}
+
+@media (min-width: 992px) {
+  .project-box-wrapper { padding: 1.75rem; }
+}
+
+/* Allow project wrapper to be wider on very large screens but keep centered */
+@media (min-width: 1200px) {
+  .project-box-wrapper {
+    max-width: 1600px; /* increased to allow 3 columns with padding */
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 1.25rem; /* less aggressive padding to allow width for 3 columns */
+    padding-right: 1.25rem;
+  }
+}
+
+@media (min-width: 1600px) {
+  .project-box-wrapper {
+    max-width: 1800px;
+  }
+}
+
+/* Scoped flexbox fallback that mirrors Bootstrap column widths
+   This forces a predictable multi-column layout only inside the
+   `.project-box-wrapper`, avoiding site-wide overrides. */
+.project-box-wrapper .row {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  --project-gap: 0.9rem !important;
+  gap: var(--project-gap) !important;
+}
+@media (min-width: 1200px) {
+  .project-box-wrapper .row {
+    --project-gap: 0.5rem !important;
+    gap: var(--project-gap) !important;
+  }
+}
+/* Force all columns inside .project-box-wrapper to override global .row > * width: 100% */
+.project-box-wrapper .row > [class*="col-"],
+.project-box-wrapper .row > .col,
+.project-box-wrapper .row > .col-12,
+.project-box-wrapper .row > .col-sm-12,
+.project-box-wrapper .row > .col-md-6,
+.project-box-wrapper .row > .col-lg-4 {
+  box-sizing: border-box !important;
+  padding-left: 0.5rem !important;
+  padding-right: 0.5rem !important;
+  flex: 0 0 100% !important;
+  max-width: 100% !important;
+  width: 100% !important;
+}
+@media (min-width: 576px) {
+  .project-box-wrapper .row > [class*="col-"],
+  .project-box-wrapper .row > .col,
+  .project-box-wrapper .row > .col-12,
+  .project-box-wrapper .row > .col-sm-12,
+  .project-box-wrapper .row > .col-md-6,
+  .project-box-wrapper .row > .col-lg-4 {
+    /* 2 columns: subtract gap once */
+    flex: 0 0 calc((100% - var(--project-gap)) / 2) !important;
+    max-width: calc((100% - var(--project-gap)) / 2) !important;
+    width: calc((100% - var(--project-gap)) / 2) !important;
+  }
+}
+@media (min-width: 1200px) {
+  .project-box-wrapper .row > [class*="col-"],
+  .project-box-wrapper .row > .col,
+  .project-box-wrapper .row > .col-12,
+  .project-box-wrapper .row > .col-sm-12,
+  .project-box-wrapper .row > .col-md-6,
+  .project-box-wrapper .row > .col-lg-4 {
+    padding-left: 0.25rem !important;
+    padding-right: 0.25rem !important;
+  }
+}
+@media (min-width: 992px) {
+  .project-box-wrapper .row > [class*="col-"],
+  .project-box-wrapper .row > .col,
+  .project-box-wrapper .row > .col-12,
+  .project-box-wrapper .row > .col-sm-12,
+  .project-box-wrapper .row > .col-md-6,
+  .project-box-wrapper .row > .col-lg-4 {
+    /* 3 columns: subtract gap twice */
+    flex: 0 0 calc((100% - (2 * var(--project-gap))) / 3) !important;
+    max-width: calc((100% - (2 * var(--project-gap))) / 3) !important;
+    width: calc((100% - (2 * var(--project-gap))) / 3) !important;
+  }
+}
+
+/* More specific rules targeting common column classes used in the project lists.
+   These have higher selector specificity and ensure correct column sizing
+   even if other CSS is interfering. */
+.project-box-wrapper .row > .col-sm-12,
+.project-box-wrapper .row > .col-12,
+.project-box-wrapper .row > .col {
+  flex: 0 0 100% !important;
+  max-width: 100% !important;
+  width: auto !important;
+}
+
+@media (min-width: 768px) {
+  .project-box-wrapper .row > .col-md-6,
+  .project-box-wrapper .row > .col-sm-6,
+  .project-box-wrapper .row > .col-6 {
+    flex: 0 0 50% !important;
+    max-width: 50% !important;
+    width: 50% !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .project-box-wrapper .row > .col-lg-4,
+  .project-box-wrapper .row > .col-md-4,
+  .project-box-wrapper .row > .col-4 {
+    flex: 0 0 calc((100% - (2 * var(--project-gap))) / 3) !important;
+    max-width: calc((100% - (2 * var(--project-gap))) / 3) !important;
+    width: calc((100% - (2 * var(--project-gap))) / 3) !important;
+  }
+}
+
+/* Ensure col-lg-4 wins against any other !important rules by adding more specific selectors */
+.project-box-wrapper > .row > div.col-lg-4,
+.project-box-wrapper > .row > div.col-md-4,
+.project-box-wrapper > .row > div.col-4 {
+  flex: 0 0 calc((100% - (2 * var(--project-gap))) / 3) !important;
+  max-width: calc((100% - (2 * var(--project-gap))) / 3) !important;
+  width: calc((100% - (2 * var(--project-gap))) / 3) !important;
+}
+
+/* ===== Reset aggressive project-box-wrapper column overrides =====
+   Some earlier rules forced exact calc() widths and used !important
+   which made certain columns render narrower when markup varied.
+   The following higher-specificity resets restore Bootstrap's native
+   `.col-*` sizing while keeping the wrapper visuals intact. */
+.project-box-wrapper .row > [class*="col-"],
+.project-box-wrapper .row > .col,
+.project-box-wrapper .row > .col-12,
+.project-box-wrapper .row > .col-sm-12,
+.project-box-wrapper .row > .col-md-6,
+.project-box-wrapper .row > .col-lg-4 {
+  /* allow Bootstrap's flex-basis and width to determine sizing */
+  flex: 0 0 auto !important;
+  width: auto !important;
+  max-width: none !important;
+  box-sizing: border-box !important;
+  padding-left: 0.5rem !important;
+  padding-right: 0.5rem !important;
+}
+
+/* On larger screens let the .col-* classes control widths again */
+@media (min-width: 576px) {
+  .project-box-wrapper .row > .col-md-6,
+  .project-box-wrapper .row > .col-sm-6,
+  .project-box-wrapper .row > .col-6 {
+    flex: 0 0 50% !important;
+    max-width: 50% !important;
+    width: 50% !important;
+  }
+}
+@media (min-width: 992px) {
+  .project-box-wrapper .row > .col-lg-4,
+  .project-box-wrapper .row > .col-md-4,
+  .project-box-wrapper .row > .col-4 {
+    flex: 0 0 33.333333% !important;
+    max-width: 33.333333% !important;
+    width: 33.333333% !important;
+  }
+}
+
+/* Normalize any direct media inside cards so all cards size consistently
+   This catches images/videos that were missing the `card-img-top` class. */
+.project-box-wrapper .card img,
+.project-box-wrapper .card > video,
+.project-box-wrapper .card img.card-img-top {
+  display: block !important;
+  width: 100% !important;
+  height: 200px !important;
+  object-fit: cover !important;
+}
+
+/* Ensure video controls don't stretch card layout irregularly */
+.project-box-wrapper .card > video { background: #000; }
+
+/* Ensure images aren't constrained by intrinsic max-widths or margins */
+.project-box-wrapper .card img,
+.project-box-wrapper .card .card-img-top {
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* Purple-ish blue styling for the internship section
+   Slightly stronger tint than the previous subtle version, leaning
+   toward blue with a purple cast. Left accent restored to the visible
+   style you approved earlier but shifted blue-purple.
+*/
+#internship .internship-content {
+  /* dark background with a faint blue-purple gradient overlay */
+  background: linear-gradient(180deg, rgba(6,10,20,0.96), rgba(10,14,28,0.98)) !important;
+  color: rgba(240,240,255,0.98) !important;
+  /* restored visible left accent (blue-ish purple) */
+  border-left: 5px solid rgba(64,90,255,0.92) !important; /* purple-ish blue */
+  box-shadow: 0 12px 36px rgba(12,14,26,0.54), 0 0 28px rgba(64,90,255,0.06) !important;
+  transition: box-shadow 220ms ease, background 220ms ease;
+}
+
+/* Headings are light; links lean bluish-purple for the requested tint */
+#internship .internship-content h2,
+#internship .internship-content h3,
+#internship .internship-content h4 {
+  color: #eef1ff !important; /* near-white with cool tint */
+}
+#internship .internship-content a {
+  color: rgba(120,150,255,0.98) !important; /* bluish-purple links */
+}
+#internship .internship-content a:hover,
+#internship .internship-content a:focus {
+  color: rgba(150,170,255,1) !important;
+  text-decoration: underline !important;
+}
+
+/* Paragraphs and list items: readable with a cool off-white */
+#internship .internship-content p,
+#internship .internship-content li {
+  color: rgba(230,232,245,0.95) !important;
+}
+
+/* Aside cards get a faint bluish border to match the accent */
+#internship aside .card {
+  border: 1px solid rgba(64,90,255,0.06) !important;
+  box-shadow: 0 6px 22px rgba(8,10,18,0.46) !important;
+}
+
+/* Code blocks keep contrast and show a subtle blue-purple marker */
+#internship pre, #internship code {
+  background: linear-gradient(180deg, rgba(8,8,12,0.9), rgba(12,12,20,0.95)) !important;
+  border-left: 4px solid rgba(64,90,255,0.18) !important;
+  color: #eef0ff !important;
+}
+
+/* CV page: replace white preview box with themed dark panel */
+.cv-page .bg-light {
+  background: linear-gradient(180deg, rgba(6,10,20,0.96), rgba(12,14,28,0.98)) !important;
+  color: rgba(240,240,255,0.98) !important;
+  border: 1px solid rgba(64,90,255,0.06) !important;
+  box-shadow: 0 10px 30px rgba(12,14,26,0.48) !important;
+}
+.cv-page .bg-light .download {
+  color: rgba(120,150,255,0.98) !important;
+}
+.cv-page .bg-light .text-muted {
+  color: rgba(200,205,220,0.7) !important;
+}
+.cv-page img#cvPreview {
+  border-radius: 0.5rem;
+  box-shadow: 0 8px 28px rgba(64,90,255,0.06) !important;
+}
+
+
+
 

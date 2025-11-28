@@ -185,6 +185,24 @@ function openModal31() {
 function closeModal31() {
   var el = document.getElementById("myModal31"); el.classList.remove('show'); el.style.display = "none";
 }
+function openModal32() {
+  var el = document.getElementById("myModal32"); el.classList.add('show'); el.style.display = "flex";
+}
+function closeModal32() {
+  var el = document.getElementById("myModal32"); el.classList.remove('show'); el.style.display = "none";
+}
+function openModal33() {
+  var el = document.getElementById("myModal33"); el.classList.add('show'); el.style.display = "flex";
+}
+function closeModal33() {
+  var el = document.getElementById("myModal33"); el.classList.remove('show'); el.style.display = "none";
+}
+function openModal34() {
+  var el = document.getElementById("myModal34"); el.classList.add('show'); el.style.display = "flex";
+}
+function closeModal34() {
+  var el = document.getElementById("myModal34"); el.classList.remove('show'); el.style.display = "none";
+}
 
 // Close any modal currently shown
 function closeCurrentModal() {
@@ -227,4 +245,27 @@ document.addEventListener('DOMContentLoaded', function() {
       closeCurrentModal();
     }
   });
+
+  // Mark the current page's nav link as active by matching href to the pathname
+  (function markActiveNav() {
+    try {
+      var path = window.location.pathname.split('/').pop();
+      if (!path) path = 'index.html';
+      var links = document.querySelectorAll('#mainNav .nav-link');
+      links.forEach(function(a){
+        var href = a.getAttribute('href');
+        if (!href) return;
+        var hrefName = href.split('/').pop();
+        if (hrefName === path) {
+          a.classList.add('active');
+          a.setAttribute('aria-current','page');
+        } else {
+          a.classList.remove('active');
+          a.removeAttribute('aria-current');
+        }
+      });
+    } catch (err) {
+      // fail quietly
+    }
+  })();
 });

@@ -22,7 +22,7 @@
     <link href="css/custom.css" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     </head>
-    <body id="page-top">
+    <body id="page-top" class="theme-cyberpunk">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
             <div class="container px-4 px-lg-5">
@@ -41,12 +41,25 @@
                 </div>
             </div>
         </nav>
-        <!-- Masthead-->
+        <!-- Masthead (terminal-style header) -->
         <header class="masthead">
             <div class="container px-4 px-lg-5 h-100">
                 <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
                     <div class="col-lg-8 align-self-end">
-                        <h1 class="text-white font-weight-bold">portfolio Daan Sterckx</h1>
+                        <div class="terminal" role="status" aria-live="polite" aria-atomic="true">
+                            <div class="terminal-header">
+                                <span class="terminal-dot red"></span>
+                                <span class="terminal-dot yellow"></span>
+                                <span class="terminal-dot green"></span>
+                            </div>
+                            <div class="terminal-body">
+                                <div class="terminal-line">
+                                    <span class="prompt">daan@portfolio:~$</span>
+                                    <span id="terminal-output" class="terminal-output" data-text="portfolio Daan Sterckx"><span class="typed" aria-hidden="true"></span><span class="terminal-cursor" aria-hidden="true">▉</span></span>
+                                </div>
+                                <div class="terminal-responses" aria-hidden="true"></div>
+                            </div>
+                        </div>
                         <hr class="divider" />
                     </div>
                     <div class="col-lg-8 align-self-baseline">
@@ -167,6 +180,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
         <script src="js/scripts.js"></script>
+        <script src="js/terminal.js"></script>
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
     </body>
 </html>
