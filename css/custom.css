@@ -6,29 +6,7 @@
   overflow: visible; /* allow the accent pseudo-element to sit outside without shrinking content */
 }
 
-/* --- Restore Bootstrap grid behavior for project boxes ---
-   Remove custom calc-based sizing and let the `.col-*` classes
-   control column widths at their standard breakpoints (mobile-first).
-   This makes layout: 1 column on small, 2 on md, 3 on lg automatically.
-*/
-.project-box-wrapper .row > [class*="col-"],
-.project-box-wrapper .row > .col {
-  /* defer to Bootstrap's control at all breakpoints */
-  flex: 0 0 auto;
-  width: auto;
-  max-width: none;
-  box-sizing: border-box;
-  padding-left: 0.75rem; /* match Bootstrap gutter */
-  padding-right: 0.75rem;
-}
-
-/* Ensure standard Bootstrap breakpoints win (2 cols on md, 3 on lg) */
-@media (min-width: 768px) {
-  /* Use Bootstrap's `.col-*` classes to set column widths; no forced overrides here. */
-}
-@media (min-width: 992px) {
-  /* Use Bootstrap's `.col-*` classes to set column widths; no forced overrides here. */
-}
+/* Use Bootstrap's grid classes (.row/.col-*) - no overrides here */
 
 
 .card.card-accent::before {
@@ -54,11 +32,7 @@
 /* Keep columns default; let Bootstrap's `.row`/`.col-*` control layout.
    Avoid forcing display type on columns which can interfere with Bootstrap.
 */
-.project-box-wrapper .row > [class*="col-"],
-.personal-projects-wrapper .row > [class*="col-"] {
-  /* intentionally left blank; Bootstrap controls column display */
-  box-sizing: border-box;
-}
+/* Bootstrap will control `.row` and `.col-*` behavior; no row-level overrides here. */
 
 /* Cards should fill their column vertically and use a consistent minimum height */
 .project-box-wrapper .card,
@@ -110,31 +84,8 @@
     min-height: 320px;
   }
 }
-/* Use Bootstrap classes (.col-*, .row) to manage layout on the personal projects page.
-   Keep spacing but do not override widths so Bootstrap can control responsive behavior.
-*/
-.personal-projects-wrapper .row > [class*="col-"] {
-  box-sizing: border-box;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-}
-/* MAX SPECIFICITY override for Bootstrap columns inside .project-box-wrapper */
-.project-box-wrapper .row > [class*="col-"][style],
-.project-box-wrapper .row > [class*="col-"] {
-  width: auto;
-}
-@media (min-width: 576px) {
-  .project-box-wrapper .row > [class*="col-"][style],
-  .project-box-wrapper .row > [class*="col-"] {
-    width: auto;
-  }
-}
-@media (min-width: 992px) {
-  .project-box-wrapper .row > [class*="col-"][style],
-  .project-box-wrapper .row > [class*="col-"] {
-    width: auto;
-  }
-}
+/* Keep UI spacing for personal projects, rely on Bootstrap grid for widths */
+/* No special column-width overrides here; Bootstrap grid handles width behavior */
 /* Custom overrides for portfolio images - make all thumbnails uniform size */
 
 /* Target the portfolio-box container and ensure the grid items are cropped consistently */
@@ -319,7 +270,7 @@ body .container .h3 {
 
 /* Keep aside sticky on large screens so the content flows nicely */
 @media (min-width: 992px) {
-  #internship .col-lg-4 aside {
+  #internship .internship-aside aside {
     position: static !important; /* explicitly force static so aside scrolls with content */
     top: auto !important;
   }
@@ -440,8 +391,9 @@ body .container .h3 {
 /* Give the columns some breathing room */
 #internship .row.gx-4:last-child { margin-bottom: 0; }
 @media (min-width: 992px) {
-  #internship .col-lg-8 { padding-right: 2rem; }
-  #internship .col-lg-4 { padding-left: 2rem; }
+  /* Specific padding instead of targeting `.col-*` classes; use content wrapper classes if needed */
+  #internship .internship-main { padding-right: 2rem; }
+  #internship .internship-aside { padding-left: 2rem; }
 }
 
 /* =========================
@@ -771,34 +723,7 @@ a[href*="github.com"] svg circle {
   }
 }
 
-/* Keep Bootstrap's grid behavior inside .project-box-wrapper instead of forcing custom widths.
-   This removes calc() overrides and lets `.col-sm-12`, `.col-md-6`, `.col-lg-4` control layout.
-*/
-.project-box-wrapper .row {
-  /* keep gap but allow Bootstrap gutters to function normally */
-  gap: 1rem;
-}
-.project-box-wrapper .row > [class*="col-"],
-.project-box-wrapper .row > .col {
-  box-sizing: border-box;
-  padding-left: 0.75rem; /* Bootstrap gutter half */
-  padding-right: 0.75rem;
-}
-
-/* ===== Reset aggressive project-box-wrapper column overrides =====
-   Ensure small screens stack (full-width) while restoring Bootstrap
-   control at larger breakpoints. The reset below sets columns to
-   100% width by default so mobile devices show a single column stack.
-*/
-.project-box-wrapper .row > [class*="col-"],
-.project-box-wrapper .row > .col,
-.project-box-wrapper .row > .col-12,
-.project-box-wrapper .row > .col-sm-12,
-.project-box-wrapper .row > .col-md-6,
-.project-box-wrapper .row > .col-lg-4 {
-  /* Let Bootstrap gutters and column padding manage spacing */
-  box-sizing: border-box;
-}
+/* No `.row` or `.col-*` overrides: let Bootstrap handle layout inside the project wrapper. */
 
 /* On larger screens let the .col-* classes control widths again */
 /* Let Bootstrap's breakpoints `.col-md-6`, `.col-lg-4` control the widths. */
@@ -863,7 +788,7 @@ a[href*="github.com"] svg circle {
 }
 
 /* Aside cards get a faint bluish border to match the accent */
-#internship aside .card {
+#internship .internship-aside .card {
   border: 1px solid rgba(64,90,255,0.06) !important;
   box-shadow: 0 6px 22px rgba(8,10,18,0.46) !important;
 }
