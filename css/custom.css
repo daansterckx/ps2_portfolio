@@ -865,20 +865,20 @@ a[href*="github.com"] svg circle {
 }
 
 /* ===== Reset aggressive project-box-wrapper column overrides =====
-   Some earlier rules forced exact calc() widths and used !important
-   which made certain columns render narrower when markup varied.
-   The following higher-specificity resets restore Bootstrap's native
-   `.col-*` sizing while keeping the wrapper visuals intact. */
+   Ensure small screens stack (full-width) while restoring Bootstrap
+   control at larger breakpoints. The reset below sets columns to
+   100% width by default so mobile devices show a single column stack.
+*/
 .project-box-wrapper .row > [class*="col-"],
 .project-box-wrapper .row > .col,
 .project-box-wrapper .row > .col-12,
 .project-box-wrapper .row > .col-sm-12,
 .project-box-wrapper .row > .col-md-6,
 .project-box-wrapper .row > .col-lg-4 {
-  /* allow Bootstrap's flex-basis and width to determine sizing */
-  flex: 0 0 auto !important;
-  width: auto !important;
-  max-width: none !important;
+  /* default: mobile-first full-width columns so cards stack */
+  flex: 0 0 100% !important;
+  width: 100% !important;
+  max-width: 100% !important;
   box-sizing: border-box !important;
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
