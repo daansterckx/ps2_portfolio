@@ -13,21 +13,21 @@
 */
 .project-box-wrapper .row > [class*="col-"],
 .project-box-wrapper .row > .col {
-  /* revert to Bootstrap's control */
-  flex: 0 0 auto !important;
-  width: auto !important;
-  max-width: none !important;
-  box-sizing: border-box !important;
-  padding-left: 0.75rem !important; /* match Bootstrap gutter */
-  padding-right: 0.75rem !important;
+  /* defer to Bootstrap's control at all breakpoints */
+  flex: 0 0 auto;
+  width: auto;
+  max-width: none;
+  box-sizing: border-box;
+  padding-left: 0.75rem; /* match Bootstrap gutter */
+  padding-right: 0.75rem;
 }
 
 /* Ensure standard Bootstrap breakpoints win (2 cols on md, 3 on lg) */
 @media (min-width: 768px) {
-  .project-box-wrapper .row > .col-md-6 { flex: 0 0 50% !important; max-width: 50% !important; width: 50% !important; }
+  /* Use Bootstrap's `.col-*` classes to set column widths; no forced overrides here. */
 }
 @media (min-width: 992px) {
-  .project-box-wrapper .row > .col-lg-4 { flex: 0 0 33.333333% !important; max-width: 33.333333% !important; width: 33.333333% !important; }
+  /* Use Bootstrap's `.col-*` classes to set column widths; no forced overrides here. */
 }
 
 
@@ -51,11 +51,12 @@
   display: none !important;
 }
 
-/* Ensure columns are flex containers and cards stretch to match heights */
+/* Keep columns default; let Bootstrap's `.row`/`.col-*` control layout.
+   Avoid forcing display type on columns which can interfere with Bootstrap.
+*/
 .project-box-wrapper .row > [class*="col-"],
 .personal-projects-wrapper .row > [class*="col-"] {
-  display: flex;
-  align-items: stretch;
+  display: block; /* keep the columns as normal block elements for Bootstrap */
 }
 
 /* Cards should fill their column vertically and use a consistent minimum height */
@@ -98,33 +99,23 @@
 @media (min-width: 992px) {
   .project-box-wrapper .card,
   .personal-projects-wrapper .card {
-    height: 420px !important;
+    min-height: 420px;
   }
 }
 
 @media (max-width: 575.98px) {
   .project-box-wrapper .card,
   .personal-projects-wrapper .card {
-    height: 320px !important;
+    min-height: 320px;
   }
 }
-/* ABSOLUTE OVERRIDE for Bootstrap grid columns inside .project-box-wrapper */
-/* Only override grid for personal projects page */
+/* Use Bootstrap classes (.col-*, .row) to manage layout on the personal projects page.
+   Keep spacing but do not override widths so Bootstrap can control responsive behavior.
+*/
 .personal-projects-wrapper .row > [class*="col-"] {
-  width: auto;
-  max-width: auto;
-}
-@media (min-width: 576px) {
-  .personal-projects-wrapper .row > [class*="col-"] {
-    width: 50% !important;
-    max-width: 50% !important;
-  }
-}
-@media (min-width: 992px) {
-  .personal-projects-wrapper .row > [class*="col-"] {
-    width: 33.333333% !important;
-    max-width: 33.333333% !important;
-  }
+  box-sizing: border-box;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
 }
 /* MAX SPECIFICITY override for Bootstrap columns inside .project-box-wrapper */
 .project-box-wrapper .row > [class*="col-"][style],
@@ -510,8 +501,7 @@ body .container .h3 {
 
 /* Ensure the terminal column in the masthead is left-aligned so the terminal window sits to the left */
 /* removed earlier forced left-alignment rules — restore default Bootstrap behavior */
-.masthead .align-self-end { /* restored to Bootstrap defaults */ }
-.masthead .align-self-end .terminal { /* restored to Bootstrap defaults */ }
+/* restored to Bootstrap defaults for masthead alignment — no custom rules */
 /* Keep default column widths — don't force full-width columns here (restored Bootstrap behavior) */
 
 /* Override Bootstrap row centering in masthead so content can be left-aligned */
@@ -805,34 +795,14 @@ a[href*="github.com"] svg circle {
 .project-box-wrapper .row > .col-sm-12,
 .project-box-wrapper .row > .col-md-6,
 .project-box-wrapper .row > .col-lg-4 {
-  /* default: mobile-first full-width columns so cards stack */
-  flex: 0 0 100% !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  box-sizing: border-box !important;
-  padding-left: 0.5rem !important;
-  padding-right: 0.5rem !important;
+  /* Keep spacing in the wrapper but let Bootstrap control widths */
+  box-sizing: border-box;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 /* On larger screens let the .col-* classes control widths again */
-@media (min-width: 576px) {
-  .project-box-wrapper .row > .col-md-6,
-  .project-box-wrapper .row > .col-sm-6,
-  .project-box-wrapper .row > .col-6 {
-    flex: 0 0 50% !important;
-    max-width: 50% !important;
-    width: 50% !important;
-  }
-}
-@media (min-width: 992px) {
-  .project-box-wrapper .row > .col-lg-4,
-  .project-box-wrapper .row > .col-md-4,
-  .project-box-wrapper .row > .col-4 {
-    flex: 0 0 33.333333% !important;
-    max-width: 33.333333% !important;
-    width: 33.333333% !important;
-  }
-}
+/* Let Bootstrap's breakpoints `.col-md-6`, `.col-lg-4` control the widths. */
 
 /* Normalize any direct media inside cards so all cards size consistently
    This catches images/videos that were missing the `card-img-top` class. */
