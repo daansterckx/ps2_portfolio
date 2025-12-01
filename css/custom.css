@@ -56,7 +56,8 @@
 */
 .project-box-wrapper .row > [class*="col-"],
 .personal-projects-wrapper .row > [class*="col-"] {
-  display: block; /* keep the columns as normal block elements for Bootstrap */
+  /* intentionally left blank; Bootstrap controls column display */
+  box-sizing: border-box;
 }
 
 /* Cards should fill their column vertically and use a consistent minimum height */
@@ -718,14 +719,14 @@ a[href*="github.com"] svg circle {
               0 0 30px rgba(75,43,255,0.10), /* soft spread */
               0 4px 12px rgba(0,255,247,0.04) inset; /* subtle inner cyan tint */
   margin-bottom: 1.5rem;
-  overflow: hidden; /* ensure the left accent and inner glow respect rounded corners */
+  overflow: visible; /* allow `.row` negative margins (gutters) to display correctly */
 }
 
 /* Add a cyan/blue left accent stripe similar to the internship page */
 .project-box-wrapper {
   position: relative;
   border-left: 4px solid var(--cyber-accent);
-  padding-left: calc(1.25rem + 12px); /* make room for the left accent */
+  padding-left: 1.25rem; /* use standard padding to avoid extra width */
 }
 
 .project-box-wrapper::before {
@@ -795,10 +796,8 @@ a[href*="github.com"] svg circle {
 .project-box-wrapper .row > .col-sm-12,
 .project-box-wrapper .row > .col-md-6,
 .project-box-wrapper .row > .col-lg-4 {
-  /* Keep spacing in the wrapper but let Bootstrap control widths */
+  /* Let Bootstrap gutters and column padding manage spacing */
   box-sizing: border-box;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
 }
 
 /* On larger screens let the .col-* classes control widths again */
