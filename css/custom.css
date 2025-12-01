@@ -6,6 +6,31 @@
   overflow: visible; /* allow the accent pseudo-element to sit outside without shrinking content */
 }
 
+/* --- Restore Bootstrap grid behavior for project boxes ---
+   Remove custom calc-based sizing and let the `.col-*` classes
+   control column widths at their standard breakpoints (mobile-first).
+   This makes layout: 1 column on small, 2 on md, 3 on lg automatically.
+*/
+.project-box-wrapper .row > [class*="col-"],
+.project-box-wrapper .row > .col {
+  /* revert to Bootstrap's control */
+  flex: 0 0 auto !important;
+  width: auto !important;
+  max-width: none !important;
+  box-sizing: border-box !important;
+  padding-left: 0.75rem !important; /* match Bootstrap gutter */
+  padding-right: 0.75rem !important;
+}
+
+/* Ensure standard Bootstrap breakpoints win (2 cols on md, 3 on lg) */
+@media (min-width: 768px) {
+  .project-box-wrapper .row > .col-md-6 { flex: 0 0 50% !important; max-width: 50% !important; width: 50% !important; }
+}
+@media (min-width: 992px) {
+  .project-box-wrapper .row > .col-lg-4 { flex: 0 0 33.333333% !important; max-width: 33.333333% !important; width: 33.333333% !important; }
+}
+
+
 .card.card-accent::before {
   content: "";
   position: absolute;
@@ -38,18 +63,18 @@
 .personal-projects-wrapper .card,
 .project-box-wrapper .card.card-accent,
 .personal-projects-wrapper .card.card-accent {
-  display: flex !important;
-  flex-direction: column !important;
-  height: 360px !important; /* fixed height for consistent appearance */
+  display: flex;
+  flex-direction: column;
+  min-height: 360px; /* allow cards to be taller if content requires it */
 }
 
 /* Force cards to fill their column width so the card element itself
    doesn't become narrower than its parent column in some browsers */
 .project-box-wrapper .card,
 .project-box-wrapper .card.card-accent {
-  width: 100% !important;
-  flex: 1 1 100% !important;
-  box-sizing: border-box !important;
+  width: 100%;
+  flex: 1 1 100%;
+  box-sizing: border-box;
 }
 
 /* Ensure card bodies expand to take available space */
@@ -755,113 +780,18 @@ a[href*="github.com"] svg circle {
   }
 }
 
-/* Scoped flexbox fallback that mirrors Bootstrap column widths
-   This forces a predictable multi-column layout only inside the
-   `.project-box-wrapper`, avoiding site-wide overrides. */
+/* Keep Bootstrap's grid behavior inside .project-box-wrapper instead of forcing custom widths.
+   This removes calc() overrides and lets `.col-sm-12`, `.col-md-6`, `.col-lg-4` control layout.
+*/
 .project-box-wrapper .row {
-  display: flex !important;
-  flex-wrap: wrap !important;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-  --project-gap: 0.9rem !important;
-  gap: var(--project-gap) !important;
+  /* keep gap but allow Bootstrap gutters to function normally */
+  gap: 1rem;
 }
-@media (min-width: 1200px) {
-  .project-box-wrapper .row {
-    --project-gap: 0.5rem !important;
-    gap: var(--project-gap) !important;
-  }
-}
-/* Force all columns inside .project-box-wrapper to override global .row > * width: 100% */
 .project-box-wrapper .row > [class*="col-"],
-.project-box-wrapper .row > .col,
-.project-box-wrapper .row > .col-12,
-.project-box-wrapper .row > .col-sm-12,
-.project-box-wrapper .row > .col-md-6,
-.project-box-wrapper .row > .col-lg-4 {
-  box-sizing: border-box !important;
-  padding-left: 0.5rem !important;
-  padding-right: 0.5rem !important;
-  flex: 0 0 100% !important;
-  max-width: 100% !important;
-  width: 100% !important;
-}
-@media (min-width: 576px) {
-  .project-box-wrapper .row > [class*="col-"],
-  .project-box-wrapper .row > .col,
-  .project-box-wrapper .row > .col-12,
-  .project-box-wrapper .row > .col-sm-12,
-  .project-box-wrapper .row > .col-md-6,
-  .project-box-wrapper .row > .col-lg-4 {
-    /* 2 columns: subtract gap once */
-    flex: 0 0 calc((100% - var(--project-gap)) / 2) !important;
-    max-width: calc((100% - var(--project-gap)) / 2) !important;
-    width: calc((100% - var(--project-gap)) / 2) !important;
-  }
-}
-@media (min-width: 1200px) {
-  .project-box-wrapper .row > [class*="col-"],
-  .project-box-wrapper .row > .col,
-  .project-box-wrapper .row > .col-12,
-  .project-box-wrapper .row > .col-sm-12,
-  .project-box-wrapper .row > .col-md-6,
-  .project-box-wrapper .row > .col-lg-4 {
-    padding-left: 0.25rem !important;
-    padding-right: 0.25rem !important;
-  }
-}
-@media (min-width: 992px) {
-  .project-box-wrapper .row > [class*="col-"],
-  .project-box-wrapper .row > .col,
-  .project-box-wrapper .row > .col-12,
-  .project-box-wrapper .row > .col-sm-12,
-  .project-box-wrapper .row > .col-md-6,
-  .project-box-wrapper .row > .col-lg-4 {
-    /* 3 columns: subtract gap twice */
-    flex: 0 0 calc((100% - (2 * var(--project-gap))) / 3) !important;
-    max-width: calc((100% - (2 * var(--project-gap))) / 3) !important;
-    width: calc((100% - (2 * var(--project-gap))) / 3) !important;
-  }
-}
-
-/* More specific rules targeting common column classes used in the project lists.
-   These have higher selector specificity and ensure correct column sizing
-   even if other CSS is interfering. */
-.project-box-wrapper .row > .col-sm-12,
-.project-box-wrapper .row > .col-12,
 .project-box-wrapper .row > .col {
-  flex: 0 0 100% !important;
-  max-width: 100% !important;
-  width: auto !important;
-}
-
-@media (min-width: 768px) {
-  .project-box-wrapper .row > .col-md-6,
-  .project-box-wrapper .row > .col-sm-6,
-  .project-box-wrapper .row > .col-6 {
-    flex: 0 0 50% !important;
-    max-width: 50% !important;
-    width: 50% !important;
-  }
-}
-
-@media (min-width: 992px) {
-  .project-box-wrapper .row > .col-lg-4,
-  .project-box-wrapper .row > .col-md-4,
-  .project-box-wrapper .row > .col-4 {
-    flex: 0 0 calc((100% - (2 * var(--project-gap))) / 3) !important;
-    max-width: calc((100% - (2 * var(--project-gap))) / 3) !important;
-    width: calc((100% - (2 * var(--project-gap))) / 3) !important;
-  }
-}
-
-/* Ensure col-lg-4 wins against any other !important rules by adding more specific selectors */
-.project-box-wrapper > .row > div.col-lg-4,
-.project-box-wrapper > .row > div.col-md-4,
-.project-box-wrapper > .row > div.col-4 {
-  flex: 0 0 calc((100% - (2 * var(--project-gap))) / 3) !important;
-  max-width: calc((100% - (2 * var(--project-gap))) / 3) !important;
-  width: calc((100% - (2 * var(--project-gap))) / 3) !important;
+  box-sizing: border-box;
+  padding-left: 0.75rem; /* Bootstrap gutter half */
+  padding-right: 0.75rem;
 }
 
 /* ===== Reset aggressive project-box-wrapper column overrides =====
