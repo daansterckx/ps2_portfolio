@@ -531,9 +531,28 @@ body .container .h3 {
 /* Make terminal responsive on small screens */
 @media (max-width: 767px) {
   .terminal-line { font-size: 1.2rem; }
-  .terminal { margin: 0 12px 1rem; min-height: 80px; }
-  .prompt { position: static; transform: none; display:inline-block; margin-right:8px; }
-  .terminal-output { margin: 0; text-align:left; }
+  .terminal { 
+    margin: 0 12px 1rem; 
+    min-height: 80px; 
+    max-width: 100%;
+    overflow: hidden;
+  }
+  .terminal-body { 
+    padding: 12px; 
+    overflow: hidden;
+  }
+  .prompt { position: static; transform: none; display:inline-block; margin-right:8px; font-size: 1rem; margin-left: 0; }
+  .terminal-output { 
+    margin: 0; 
+    text-align: left; 
+    max-width: 100%;
+    font-size: 0.9rem;
+    word-break: break-word;
+    white-space: normal;
+  }
+  .terminal-line {
+    flex-wrap: wrap;
+  }
 }
 
 .terminal-response-line {
