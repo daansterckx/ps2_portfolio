@@ -407,6 +407,7 @@
                 <span class="close" onclick="closeModal16()">&times;</span>
                 <h1>Pi hole dns</h1>
                 <img src="images/pihole.png" alt="Project 15">
+                <p>this project has since been replaced by opnsense on a zima board./p>
                 <p>First i had a bind server for dns but i also wanted to block ads and malicious websites on my network so i do this using dns blocking with a pi hole i have over 1000000 blocked domains. This will soon be changed because I have ordered a zima board for opnsense and will switch to that when it arrives then dns blocking will be done by opnsense.</p>
                 <p>what i learned:</p>
                 <ul>
@@ -729,6 +730,38 @@
                 <ul>
                   <li>ethical hacking and pentesting methodology</li>
                   <li>Problem-solving under pressure</li>
+                </ul>
+              </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+          <div class="card card-accent" onclick="openModal31()">
+            <img class="card-img-top" src="images/opnsense.png" alt="Hack the boo">
+              <div class="card-body">
+                <h5 class="card-title">opnsense + ntopng</h5>
+                <p class="card-text">I have an opnsense instance running with ntopng for network traffic analysis. It also acts as my dns server with dns blocking for ads and malicious domains. I also have intrusion prevention which will block attacks based on sigma rules. It also enables me to block external ip adresses if i want to.</p>
+                    <p class="card-text"></p>
+              </div>
+            </div>
+            <div id="myModal31" class="modal">
+              <div class="modal-content">
+                <span class="close" onclick="closeModal31()">&times;</span>
+                <h1>opnsense + ntopng</h1>
+                <img src="images/opnsense.png" alt="Hack the boo">
+                <p>I have an opnsense instance running with ntopng for network traffic analysis. It also acts as my dns server with dns blocking for ads and malicious domains. I also have intrusion prevention which will block attacks based on sigma rules. It also enables me to block external ip adresses if i want to.</p>
+              <p>i also receive alerts from opnsense in wazuh and will make further automizations to block attackers and suspicious activities using n8n but i haven't done that yet at the time of writing this part. Ask me during my presentation if it works yet :)</p>
+                <p>what i learned:</p>
+                <ul>
+                  <li>networking</li>
+                  <li>network traffic analysis</li>
+                  <li>dns filtering and blocking</li>
+                  <li>intrusion prevention systems</li> 
+                  <li>sigma rules integration</li>
+                  <li>network security management</li>
+                  <li>opnsense configuration and optimization</li>
+                  <li>ntopng usage and analysis techniques</li>
+                  <li>real-time traffic monitoring</li>
+                  <li>custom alerting and reporting</li>
                 </ul>
               </div>
             </div>
